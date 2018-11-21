@@ -142,15 +142,23 @@
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-blue"></em>
-							<div class="large">120</div>
+						<?php 
+							include ('../entidades/extras.php');
+							$extra = Contador::vacio();
+							$cantidad = $extra->contadorMamografia();
+							if ($fila=mysqli_fetch_array($cantidad)){?>
+
+							<div class="large"><?php echo $fila['cantidad']?></div>
+							<?php }?>
 							<div class="text-muted">Mamografía Bilateral</div>
 						</div>
 					</div>
 				</div>
+				
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-blue panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-orange"></em>
-							<div class="large">52</div>
+							<div class="large">20</div>
 							<div class="text-muted">ECM Anormal</div>
 						</div>
 					</div>
@@ -163,10 +171,27 @@
 						</div>
 					</div>
 				</div>
+				<?php 
+					//include ('../entidades/extras.php');
+				//	$extra = Contador::vacio();
+					$cantidad = $extra->contadorPapIvaa();
+					while ($fila=mysqli_fetch_array($cantidad)){
+						
+				?>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
-							<div class="large">80</div>
+							<div class="large"><?php echo $fila['cantidad']?></div>
+							<div class="text-muted">IVAA Anormal</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
+						 <?php if($fila=mysqli_fetch_array($cantidad)){?>
+							<div class="large"><?php echo $fila['cantidad']?></div>
+						 <?php }?>
 							<div class="text-muted">PAP</div>
 						</div>
 					</div>
@@ -174,11 +199,14 @@
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
-							<div class="large">50</div>
-							<div class="text-muted">IVAA Anormal</div>
+						<?php if($fila=mysqli_fetch_array($cantidad)){?>
+							<div class="large"><?php echo $fila['cantidad']?></div>
+						 <?php }?>
+							<div class="text-muted">VPH</div>
 						</div>
 					</div>
 				</div>
+						<?php }?>
 
 			</div>
 <!--/ crear metodos para mostrar estadisticas de digitacion en los diferentes examenes de seguimiento-->
