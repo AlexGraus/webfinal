@@ -2,7 +2,6 @@
         include ("../entidades/detallecontrol_pap_ivaa.php");
         include ("../entidades/papivaa.php");
 
-
       $seguimiento = Papivaa::vacio();
       $codigoSecurity = $_GET['oculto'];
        $data = $seguimiento->buscarcodigo($codigoSecurity); 
