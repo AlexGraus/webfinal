@@ -1,3 +1,4 @@
+
 <?php 
 	include ('../entidades/paciente.php');
 	
@@ -19,6 +20,7 @@
 	$sis = $_GET['sispaciente'];
 	$paciente=new Paciente($dni,$nombres_apellidos,$fecha_nacimiento,$edad,$direccion,$telefono,$grupo_familiar,$historia,$sis,"");
 	$resp = $paciente->insertar();
+
 
 	header ("Location: ../interfaz/registrar_pacientes.php");
 

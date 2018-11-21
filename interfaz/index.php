@@ -100,7 +100,7 @@
 						 class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="mamografia.php">
+					<li><a class="" href="seguimiento_mamografia.php">
 							<span class="fa fa-arrow-right">&nbsp;</span> Mamografía
 						</a></li>
 					<li><a class="" href="control_ecm_baf.php">

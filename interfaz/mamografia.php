@@ -144,7 +144,7 @@
 			<div class="panel-heading">Buscar Paciente</div>
 			<div class="panel-body">
             <div class="col-md-6">
-					<form role="form" method="get" action="../persistencia/.php">
+					<form role="form" method="get" action="../persistencia/mamografiaDAO.php">
 						<div class="form-group">
 							<label for="caja_busqueda">DNI</label>
 							<input name="dnipaciente" id="caja_busqueda" class="form-control" placeholder="Buscar DNI" required>
@@ -190,7 +190,7 @@
 						</div>
                         <div class="form-group">
 							<label>Diagnóstico MX</label>
-							<select  class="form-control" name="examen" >
+							<select  class="form-control" name="resultados" >
           						    <option value="BI-RADS 0">BI-RADS 0</option>
                                     <option value="BI-RADS I">BI-RADS I</option>
                                     <option value="BI-RADS II">BI-RADS II</option>
@@ -203,7 +203,7 @@
 						
 						<div class="form-group">
 							<label>Fecha de Ecografía</label>
-							<input   name="fechaecografía" type="date" class="form-control" required>
+							<input   name="fechaecografia" type="date" class="form-control" required>
 						</div>
 						
 
@@ -211,8 +211,8 @@
 
                 <div class="col-md-6">
                 <div class="form-group">
-							<label>Resultado</label>
-							<select  class="form-control" name="examen" >
+							<label>Resultado de Ecografía</label>
+							<select  class="form-control" name="examenecografia" >
           						    <option value="BI-RADS 0">BI-RADS 0</option>
                                     <option value="BI-RADS I">BI-RADS I</option>
                                     <option value="BI-RADS II">BI-RADS II</option>

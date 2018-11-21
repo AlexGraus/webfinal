@@ -11,29 +11,27 @@
 	}
 
 ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ECM ANORMAL Y BAFF</title>
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
-	<link href="../css/font-awesome.min.css" rel="stylesheet">
-	<link href="../css/datepicker3.css" rel="stylesheet">
-	<link href="../css/styles.css" rel="stylesheet">
-
+	<title>Red de salud - Trujillo</title>
+	<?php require_once "scripts.php"; ?>
 	<!--Custom Font-->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/datatables.min.css"/>
+
+
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 </head>
 
 <body>
-
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -46,10 +44,7 @@
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
-
-
-
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-usertitle">
 				<div class="profile-usertitle-name"><h6><?php echo $fila['nombre']; ?></h6> </div>
@@ -64,8 +59,7 @@
 				<input type="text" class="form-control" placeholder="Buscar">
 			</div>
 		</form>
-
-			<ul class="nav menu">
+		<ul class="nav menu">
 			<li class=""><a href="index.php"><em class="fa fa-dashboard">&nbsp;</em> Inicio</a></li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-3">
 					<em class="fa fa-navicon">&nbsp;</em>Registrar <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em
@@ -109,7 +103,7 @@
 						 class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="mamografia.php">
+					<li><a class="" href="seguimiento_mamografia.php">
 							<span class="fa fa-arrow-right">&nbsp;</span> Mamografía
 						</a></li>
 					<li><a class="" href="control_ecm_baf.php">
@@ -141,62 +135,53 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Pacientes</h1>
+				<h1 class="page-header">Seguimientos</h1>
 			</div>
 		</div>
 		<!--/.row-->
+
 		<div class="panel panel-default">
-			<div class="panel-heading">Registrar Pacientes</div>
+			<div class="panel-heading">Mamografía</div>
 			<div class="panel-body">
 				<div class="col-md-6">
-					<form id="fomulario" role="form" method="get" action="../persistencia/PacienteDAO.php" >
-						<div class="form-group">
-							<label>Nombres y Apellidos</label>
-							<input id="nombres" name="nombrespaciente" class="form-control" placeholder="Ingrese Nombres y Apellidos" required>
+					<div class="form-group">
+							<label for="caja_busqueda">DNI</label>
+							<input name="dnipaciente" id="caja_busqueda" class="form-control" placeholder="Buscar DNI">
 						</div>
-						<div class="form-group">
-							<label>DNI</label>
-							<input id="dni"  name="dnipaciente" class="form-control" placeholder="Ingrese DNI" required>
-						</div>
-						<div class="form-group">
-							<label>Fecha de Nacimiento</label>
-							<input  id="fecha"  name="fechapaciente" type="date" class="form-control" min="1940-04-01" required>
-						</div>
-						<div class="form-group">
-							<label>Teléfono</label>
-							<input id="tele"  name="telefonopaciente" placeholder="Ingrese teléfono" class="form-control" required>
-						</div>
-						
+
 				</div>
-				<div class="col-md-6">
-						<div class="form-group">
-							<label>Dirección </label>
-							<input name="direccionpaciente" placeholder="Ingrese dirección" class="form-control" > 
-						</div>	
-						<div class="form-group">
-							<label>Historia Clínica </label>
-							<input name="historiaclinica" placeholder="Ingrese historia clínica" class="form-control" >
-						</div>	
-						<div class="form-group">
-							<label>Grupo Familiar </label>
-							<input name="grupofamiliar" placeholder="Ingrese grupo familiar" class="form-control" >
-						</div>
-						<div class="form-group">
-							<label>Seguro</label>
-							<input name="sispaciente" placeholder="Ingrese Seguro" class="form-control" >
-						</div>
-						<input type="submit" class="btn btn-primary"  value ="Registrar">
-					</div>	
-				
-				</form>
+
 			</div>
 		</div>
-			
+		<div class="panel panel-default">
+			<div class="panel-heading">Seguimientos</div>
+			<div class="panel-body">
+			<div class="col-md-12">
+						<div id="buscandoCodigo" class="form-group">
+					
+						</div>
+			 </div>
+				
+
+			</div>
+		</div>
+
+
+
+		</div>
+		<!--/.row-->
 	</div>
 	<!--/.main-->
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	 <!-- JQUERY-->           
+	 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- DATATABLES Y BUTTONS-->
+ 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+ <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/datatables.min.js"></script>
+        <!--CAMBIO DE IDIOMA Y SELECCIÓN DEL ID-->
+	<script src="../js/buscarmamografia.js"></script>
 
 
 	<script src="../js/bootstrap.min.js"></script>
@@ -206,7 +191,6 @@
 	<script src="../js/easypiechart-data.js"></script>
 	<script src="../js/bootstrap-datepicker.js"></script>
 	<script src="../js/custom.js"></script>
-
 </body>
 
 </html>
