@@ -22,7 +22,7 @@
 			$this->codigopaciente=$codigopaciente;
 		}
 
-		public static function constructorvacio()
+		public static function vacio()
 		{
 			return new self('','','','','','');
 		}
@@ -40,7 +40,16 @@
             $id=$conector->insert_id;
             return $id;
         }
+       
 
+        public function buscarCodigoMamografia($codigo){
+            $conect = new Conexion();
+            $consulta = " SELECT s.idmamografia,s.dnipaciente,c.idcontrol_mamografia from 
+                seguimiento_mamografia as s inner join control_mamografia as c on s.idmamografia =c.codigoseguimientomamografia
+            WHERE s.idmamografia = $codigo";
+            $result =  $conect->query($consulta);
+            return $result;
+        }
 
     }
 

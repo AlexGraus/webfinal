@@ -59,6 +59,7 @@ include_once "conexion.php";
             $result = $conectar->query($sql);
             return $result;
         }
+    
 
         //reportes
         public function mostrarReportes(){

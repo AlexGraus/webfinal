@@ -51,6 +51,17 @@
               return $sql;
          }
 
+         public function controlesPacienteMamografia($id){
+            $conectar = new Conexion();
+            $sql = " SELECT se.nombreexamen,cb.fechabilateral,cb.descripcionbilateral FROM  seguimiento_mamografia as se inner join control_mamografia as cm on se.idmamografia = cm.codigoseguimientomamografia inner join controles_bilateral as cb on cm.idcontrol_mamografia = cb.codigocontrol
+            Where se.idmamografia =$id";
+            $result = $conectar->query($sql);
+            return $result;
+        }
+    
+         
+         
+
     }
 
 

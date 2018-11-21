@@ -90,7 +90,14 @@ class Paciente
         $result = $conectar->query($sql);
         return $result;
     }
-
+    
+    public function buscarPacienteMamografia($id){
+        $conectar = new Conexion();
+        $sql = "SELECT p.nombres_apellidos,se.nombreexamen FROM seguimiento_mamografia as se inner join paciente as p on se.dnipaciente = p.dni
+        WHERE se.idmamografia = $id";
+        $result = $conectar->query($sql);
+        return $result;
+    }
 
 
 }
