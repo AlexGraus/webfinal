@@ -24,7 +24,13 @@ include ('menu.php');
 			<div class="panel-heading">Filtrar por Fechas</div>
 			<div class="panel-body">
 				<div class="col-md-6">
-
+						<div class="form-group">
+							<select  class="form-control" id="tiporeporte" >
+									<option value="PAP">VPH, PAP Y IVAA</option>
+          						    <option value="MMM">MAMOGRAFÍA</option>
+                                    <option value="ECM">ECM Y BAF</option>
+  					 		 </select>
+						</div>
 						<div class="form-group">
 							<label for="">Fecha Inicio :</label>
 							<input class="form-control" type="date" name="caja" id="caja_busqueda" class="" placeholder="Buscar fecha" >

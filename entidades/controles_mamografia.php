@@ -60,6 +60,15 @@
         }
 
 
+        public function buscarPorFechasMamografia($fechaInicio,$fechaFin){
+            $sql="SELECT S.idmamografia,s.fechaexamen,p.nombres_apellidos,s.nombreexamen,p.historiaclinica,p.dni,s.centroprocedencia,
+            p.edad,p.fecha_nacimiento,s.diagnostico,e.fechaecografia,e.resultado FROM seguimiento_mamografia as s inner join paciente as p on s.dnipaciente = p.dni
+                                        inner join ecografia e on s.idecografia = e.idecografia
+                                        inner join control_mamografia as ct on s.idmamografia = ct.codigoseguimientomamografia
+                                        where s.nombreexamen = 'MX. BILATERAL' and s.fechaexamen  BETWEEN '".$fechaInicio."%' AND '".$fechaFin."%' ";
+            return $sql;
+    }
+
 
 
     }

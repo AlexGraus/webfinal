@@ -15,10 +15,11 @@
 
 	$direccion=$_GET['direccionpaciente'];
 	$telefono=$_GET['telefonopaciente'];
+	$telefono2=$_GET['telefonopaciente2'];
 	$grupo_familiar=$_GET['grupofamiliar'];
 	$historia = $_GET['historiaclinica'];
 	$sis = $_GET['sispaciente'];
-	$paciente=new Paciente($dni,$nombres_apellidos,$fecha_nacimiento,$edad,$direccion,$telefono,$grupo_familiar,$historia,$sis,"");
+	$paciente=new Paciente($dni,$nombres_apellidos,$fecha_nacimiento,$edad,$direccion,$telefono,$telefono2,$grupo_familiar,$historia,$sis,"");
 	$resp = $paciente->insertar();
 
 

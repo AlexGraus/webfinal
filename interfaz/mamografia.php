@@ -86,7 +86,7 @@ include ('menu.php');
 
 						<div class="form-group">
 							<label>Fecha de Ecografía</label>
-							<input   name="fechaecografia" type="date" class="form-control" required>
+							<input   name="fechaecografia" type="date" class="form-control" >
 						</div>
 
 
@@ -96,6 +96,7 @@ include ('menu.php');
                 <div class="form-group">
 							<label>Resultado de Ecografía</label>
 							<select  class="form-control" name="examenecografia" >
+									<option value="No aplica">--------</option>
           						    <option value="BI-RADS 0">BI-RADS 0</option>
                                     <option value="BI-RADS I">BI-RADS I</option>
                                     <option value="BI-RADS II">BI-RADS II</option>

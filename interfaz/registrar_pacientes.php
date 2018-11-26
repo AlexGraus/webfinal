@@ -40,6 +40,10 @@ include ('menu.php');
 							<label>Teléfono</label>
 							<input id="tele"  name="telefonopaciente" placeholder="Ingrese teléfono" class="form-control" required>
 						</div>
+						<div class="form-group">
+							<label>Teléfono 2</label>
+							<input id="tele"  name="telefonopaciente2" placeholder="Ingrese teléfono" class="form-control" >
+						</div>
 
 				</div>
 				<div class="col-md-6">

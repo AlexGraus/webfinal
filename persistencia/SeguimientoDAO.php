@@ -39,6 +39,8 @@
 						<th>Edad</th>
 						<th>Fecha de Nacimiento</th>
 						<th>Dni</th>
+						<th>Teléfono</th>
+						<th>Teléfono 2</th>
 						<th>Tipo de Examen</th>
 						<th>Fecha de Toma</th>
 						<th>Fecha de Entrega</th>
@@ -71,6 +73,8 @@
 						<td> '.$filas['edad'].' </td>
 						<td> '.$filas['fecha_nacimiento'].' </td>
 						<td> '.$filas['dni'].' </td>
+						<td> '.$filas['telefono'].' </td>
+						<td> '.$filas['telefono2'].' </td>
 						<td> '.$filas['tipoexamen'].' </td>
 						<td> '.$filas['fechaexamen'].' </td>
 						<td> '.$filas['fechaentrega'].' </td>

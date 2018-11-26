@@ -52,31 +52,33 @@ include ('menu.php');
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
-							<div class="large"><?php echo $fila['cantidad']?></div>
-							<div class="text-muted">IVAA Anormal</div>
+							<div class="large"><?php  echo $fila['cantidad']; ?></div>
+							<div class="text-muted"><?php  echo $fila['tipoexamen']; ?> </div>
 						</div>
 					</div>
 				</div>
+				<?php if($fila=mysqli_fetch_array($cantidad)){?>
+	
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
-						 <?php if($fila=mysqli_fetch_array($cantidad)){?>
-							<div class="large"><?php echo $fila['cantidad']?></div>
-						 <?php }?>
-							<div class="text-muted">PAP</div>
+							<div class="large"><?php  echo $fila['cantidad'];?></div>
+							<div class="text-muted"><?php  echo $fila['tipoexamen'];?></div>
 						</div>
 					</div>
 				</div>
+						 <?php }
+						 if($fila=mysqli_fetch_array($cantidad)){
+						 ?>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
-						<?php if($fila=mysqli_fetch_array($cantidad)){?>
-							<div class="large"><?php echo $fila['cantidad']?></div>
-						 <?php }?>
-							<div class="text-muted">VPH</div>
+							<div class="large"><?php  echo $fila['cantidad'];?></div>
+							<div class="text-muted"><?php  echo $fila['tipoexamen'];?></div>
 						</div>
 					</div>
 				</div>
+				<?php }?>
 						<?php }?>
 
 

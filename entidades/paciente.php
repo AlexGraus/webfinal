@@ -9,12 +9,13 @@ class Paciente
     protected $edad;
     protected $direccion;
     protected $telefono;
+    protected $telefono2;
     protected $grupo_familiar;
     protected $historiaclinica;
     protected $sis;
 
 
-    function __construct($dni,$nombres_apellidos,$fecha_nacimiento,$edad,$direccion,$telefono, $grupo_familiar,$historiaclinica,$sis){
+    function __construct($dni,$nombres_apellidos,$fecha_nacimiento,$edad,$direccion,$telefono,$telefono2, $grupo_familiar,$historiaclinica,$sis){
         $this->id="";
         $this->dni=$dni;
         $this->nombres_apellidos=$nombres_apellidos;
@@ -22,6 +23,7 @@ class Paciente
         $this->edad=$edad;
         $this->direccion=$direccion;
         $this->telefono=$telefono;
+        $this->telefono2=$telefono2;
         $this->grupo_familiar=$grupo_familiar;
         $this->historiaclinica = $historiaclinica;
         $this->sis = $sis;
@@ -29,16 +31,16 @@ class Paciente
 
     public static function constructorvacio()
     {
-        return new self('','','','','','','','','');
+        return new self('','','','','','','','','','');
     }
 
     public function insertar()
     {
         $db= new Conexion();
         $obj = new stdClass();
-        $sql = "INSERT INTO paciente(dni, nombres_apellidos, fecha_nacimiento, edad, direccion, telefono, grupo_familiar,historiaclinica,sis)
+        $sql = "INSERT INTO paciente(dni, nombres_apellidos, fecha_nacimiento, edad, direccion, telefono, telefono2,grupo_familiar,historiaclinica,sis)
          VALUES ('$this->dni','$this->nombres_apellidos',' $this->fecha_nacimiento', '$this->edad', '$this->direccion',
-          ' $this->telefono','$this->grupo_familiar','$this->historiaclinica','$this->sis')";
+          '$this->telefono','$this->telefono2','$this->grupo_familiar','$this->historiaclinica','$this->sis')";
         if($db->query($sql)){
           $obj->message = "registro correcto";
           $obj->insertID = $db->insert_id;
