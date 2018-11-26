@@ -12,8 +12,8 @@
 
 
 		//Traer contador de controles
-		
-		$queryContador = $controles ->mostrarCantidadMamografia(); 
+
+		$queryContador = $controles ->mostrarCantidadMamografia();
 		$resultadoContador = $cn->query($queryContador);
 		if($fila = mysqli_fetch_array($resultadoContador)){
 			$cantidadTotal = $fila['contador'];
@@ -33,7 +33,7 @@
 				$salida.='<table id="newTable" class="display nowrap">
 				<thead>
 					<tr>
-					
+
 						<th>ID</th>
 						<th>Fecha de Examen</th>
 						<th>Nombres Apellidos</th>
@@ -54,7 +54,7 @@
 							$c++;
 						}
 					}
-					
+
 				$salida.='<th>Realizar un nuevo control</th>	</tr>
 					</thead>
 				<tbody>';
@@ -77,7 +77,7 @@
                         ';
 						//Buscar Detalle
 						$codigoseguir = $filas['idmamografia'];
-						$queryDetalle = $controles ->buscarCodigoSeguimiento($codigoseguir); 
+						$queryDetalle = $controles ->buscarCodigoSeguimiento($codigoseguir);
 						$resultadoDetalle = $cn->query($queryDetalle);
 
 						//Resultado de la consulta
@@ -85,7 +85,7 @@
 						if(isset($cantidadDetalle)){
 							$detalle = $cantidadDetalle-$cantidadFilas;
 						}
-						
+
 						if($resultadoDetalle->num_rows > 0){
 							while($fila = mysqli_fetch_array($resultadoDetalle)){
 								$cantidadFilas--;
@@ -106,9 +106,9 @@
 								}
 							}
 						}
-					
+
 						$salida.='<td><a href="detalle_mamografia.php?id='.$filas['idmamografia'].'">Realizar un  nuevo control</a></td>';
-	
+
 					$salida.='</tr>';
                 }
 				$salida.='
@@ -120,4 +120,3 @@
 			}
 	echo $salida;
 ?>
-

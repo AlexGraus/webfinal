@@ -1,122 +1,7 @@
+
 <?php
-	include ('../entidades/usuario.php');
-	session_start();
-	if (!isset($_SESSION['login'])) {
-		session_destroy();
-		echo "<script language='javascript'>window.location='../login.php'</script>;";
-	} else {
-		$usuario = Usuario::constructorvacio();
-        $dato = $usuario->mostrar($_SESSION['login']);
-        $fila = mysqli_fetch_assoc($dato);
-	}
-
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Red de salud - Trujillo</title>
-	<?php require_once "scripts.php"; ?>
-	<!--Custom Font-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-</head>
-
-<body>
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span
-					 class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Red de salud </span>Admin</a>
-			</div>
-		</div><!-- /.container-fluid -->
-	</nav>
-
-	
-		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<div class="profile-sidebar">
-			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"><h6><?php echo $fila['nombre']; ?></h6> </div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div class="divider"></div>
-		<form role="search">
-			<div class="form-group">
-				<!-- /.crear metodo de busqueda en la web -->
-				<input type="text" class="form-control" placeholder="Buscar">
-			</div>
-		</form>
-		<ul class="nav menu">
-			<li class="active"><a href="index.php"><em class="fa fa-dashboard">&nbsp;</em> Inicio</a></li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-3">
-					<em class="fa fa-navicon">&nbsp;</em>Registrar <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em
-						 class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-3">
-				<li><a class="" href="registrar_pacientes.php">
-								<span class="fa fa-arrow-right">&nbsp;</span> Pacientes
-						</a></li>
-				
-					<li><a class="" href="establecimientos.php">
-							<span class="fa fa-arrow-right">&nbsp;</span> Establecimientos
-							</a></li>
-
-						<li><a class="" href="registrar_usuarios.php">
-								<span class="fa fa-arrow-right">&nbsp;</span> Usuarios
-						</a></li>
-						
-				</ul>
-			</li>
-
-
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-					<em class="fa fa-navicon">&nbsp;</em> Examenes<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em
-						 class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-2">
-					<li><a class="" href="mamografia.php">
-							<span class="fa fa-arrow-right">&nbsp;</span> Mamografía
-						</a></li>
-					<li><a class="" href="ecm_baaf.php">
-							<span class="fa fa-arrow-right">&nbsp;</span> ECM Y BAF Anormal
-						</a></li>
-					<li><a class="" href="pap_ivaa.php">
-							<span class="fa fa-arrow-right">&nbsp;</span> VPH,PAP e IVAA Anormal
-						</a></li>
-				</ul>
-			</li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-					<em class="fa fa-calendar">&nbsp;</em> Control<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em
-						 class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="seguimiento_mamografia.php">
-							<span class="fa fa-arrow-right">&nbsp;</span> Mamografía
-						</a></li>
-					<li><a class="" href="control_ecm_baf.php">
-							<span class="fa fa-arrow-right">&nbsp;</span> ECM Y BAF Anormal
-						</a></li>
-					<li><a class="" href="seguimiento_pap_ivaa.php">
-							<span class="fa fa-arrow-right">&nbsp;</span> VPH,PAP e IVAA Anormal
-						</a></li>
-				</ul>
-			</li>
-
-		
-				<li><a href="reportes.php"><em class="fa fa-toggle-off">&nbsp;</em> Reportes</a></li>
-				<li><a href="../controladores/cerrar_sesion.php"><em class="fa fa-power-off">&nbsp;</em> Cerrar Sesión</a></li>
-		</ul>
-	</div>
+include ('menu.php');
+ ?>
 	<!--/.sidebar-->
   <!--/.----------------------------------------------------------------------------------------->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -131,9 +16,7 @@
 		<!--/.row-->
 
 		<div class="row">
-			<div class="col-lg-12">
-				<h2 class="page-header">Registros Totales</h2>
-			</div>
+      <br>
 		</div>
 		<!--/.row-->
 <!--/ crear metodos para mostrar estadisticas de digitacion en los diferentes examenes de seguimiento-->
@@ -142,7 +25,7 @@
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-blue"></em>
-						<?php 
+						<?php
 							include ('../entidades/extras.php');
 							$extra = Contador::vacio();
 							$cantidad = $extra->contadorMamografia();
@@ -154,7 +37,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-blue panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-orange"></em>
@@ -171,12 +54,12 @@
 						</div>
 					</div>
 				</div>
-				<?php 
+				<?php
 					//include ('../entidades/extras.php');
 				//	$extra = Contador::vacio();
 					$cantidad = $extra->contadorPapIvaa();
 					while ($fila=mysqli_fetch_array($cantidad)){
-						
+
 				?>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
@@ -216,7 +99,7 @@
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Control
+						Estadisticas
 						<ul class="pull-right panel-settings panel-button-tab-right">
 							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
 									<em class="fa fa-cogs"></em>

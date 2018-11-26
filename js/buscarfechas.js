@@ -24,5 +24,3 @@ $('#search').click(function(){
     }
 
 });
-
-

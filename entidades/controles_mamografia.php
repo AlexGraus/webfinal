@@ -7,14 +7,14 @@
         protected $codigoseguimientomamografia;
 
         function __construct($mamografianombre, $codigoseguimientomamografia){
-			$this->mamografianombre=$mamografianombre;
-			$this->codigoseguimientomamografia=$codigoseguimientomamografia;
+			       $this->mamografianombre=$mamografianombre;
+			          $this->codigoseguimientomamografia=$codigoseguimientomamografia;
         }
-        
-		public static function vacio(){
-			return new self('','');
-        }
-        
+
+		      public static function vacio(){
+			         return new self('','');
+             }
+
         public function insertarControl(){
             $db= new Conexion();
             $sql = "INSERT INTO control_mamografia(nombremamografia,codigoseguimientomamografia)
@@ -58,9 +58,9 @@
             $result = $conectar->query($sql);
             return $result;
         }
-    
-         
-         
+
+
+
 
     }
 

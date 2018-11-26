@@ -2,13 +2,15 @@
 include ('../entidades/establecimiento.php');
 
 if (isset($_POST['submit'])) {
-
+    $codigo=$_POST['codigo'];
     $nombre=$_POST['nombre'];
-    $micro_Red=$_POST['micro_Red'];
+    $provincia=$_POST['provincia'];
+    $distrito=$_POST['distrito'];
 
-    $establecimiento= new Establecimiento($nombre,$micro_Red);
-    if ($establecimiento->buscarRepetido($nombre)==1) {
-        echo "<script language='javascript'> alert('El Usuario Ya existe  Intente Con Otro')</script>";
+    $establecimiento= new Establecimiento($codigo,$nombre,$provincia,$distrito);
+    if ($establecimiento->buscarRepetido($codigo)==1) {
+
+        echo "<script language='javascript'> alert('El Centro de Salud Ya esta Registrado')</script>";
         echo "<script language='javascript'>window.location='../interfaz/establecimientos.php'</script>;";
     }else{
         $establecimiento->insertar();

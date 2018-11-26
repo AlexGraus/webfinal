@@ -1,8 +1,8 @@
 body {
-  background: #f1f4f7;
+  background: #f7f1f4;
   padding-top: 60px;
   font-size: 14px;
-  color: #444444;
+  color: #000000;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 p {
@@ -54,7 +54,7 @@ h3, h4 {
   font-size: 2em; }
 
 input.form-control {
-  border: 1px solid #ddd;
+  border: 1px solid #EA9FF9; /*color del input*/
   box-shadow: none;
   height: 46px; }
 
@@ -65,7 +65,7 @@ input.form-control {
   height: 46px; }
 
 .form-control:focus {
-  border: 1px solid #30a5ff;
+  border: 1px solid #EA9FF9;
   outline: 0;
   box-shadow: inset 0px 0px 0px 1px #30a5ff; }
 
@@ -79,16 +79,17 @@ input.form-control {
   border: 1px solid #f9243f; }
 
 .navbar-custom {
-  background: #222;
+  background: #BFD7FF;  /*Color superior*/
   height: 60px; }
 
 .navbar-header .navbar-brand {
-  color: #fff;
+  color: #ff0000; /*Color de Letra superior*/
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 500;
   height: 60px;
-  padding-top: 18px; }
+  padding-top: 18px;
+}
 
 .navbar-header .navbar-brand span {
   color: #30a5ff; }
@@ -338,7 +339,7 @@ a.label:hover, a.label:focus {
   font-size: 17px; }
 
 .panel-primary > .panel-heading {
-  background-color: #30a5ff;
+  background-color: #BFD7FF;
   color: #fff;
   border: none; }
 
@@ -401,7 +402,7 @@ a.label:hover, a.label:focus {
   height: 60px;
   line-height: 38px; }
 
-.panel-default .panel-heading {
+.panel-default .panel-heading { /*colores del panel-heading*/
   background: #fff;
   border-bottom: 1px solid #e9ecf2;
   color: #444444; }
@@ -758,7 +759,7 @@ a.label:hover, a.label:focus {
   padding: 0;
   display: none;
   box-shadow: none;
-  background: #fff; }
+  background: #FFFFFF; }
 
 .sidebar ul {
   margin: 20px 0px; }
@@ -785,12 +786,12 @@ a.label:hover, a.label:focus {
     width: 100%; } }
 .sidebar ul.nav a:hover, .sidebar ul.nav li.parent ul li a:hover {
   text-decoration: none;
-  background-color: #30a5ff;
+  background-color: #EA9FF9; /*Color de la seleccion*/
   color: #fff; }
 
 .sidebar ul.nav .active a, .sidebar ul.nav li.parent a.active, .sidebar ul.nav .active > a:hover, .sidebar ul.nav li.parent a.active:hover, .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
   color: #fff;
-  background-color: #30a5ff; }
+  background-color: #EA9FF9; }
 
 .sidebar ul.nav ul, .sidebar ul.nav ul li {
   list-style: none;
@@ -800,7 +801,7 @@ a.label:hover, a.label:focus {
   height: 50px;
   font-size: 15px;
   line-height: 2em;
-  color: #444444; }
+  color: #000; }
 
 .sidebar ul.nav ul.children {
   width: auto;
@@ -852,12 +853,12 @@ a.label:hover, a.label:focus {
   margin: 10px 0 0 12px; }
 
 .profile-usertitle-name {
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 0px; }
 
 .profile-usertitle-status {
   text-transform: uppercase;
-  color: #AAA;
+  color: #8ad919;
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 15px; }
@@ -1025,7 +1026,7 @@ h1.page-header {
 
 .fixed-table-pagination .pagination-detail {
   margin-top: 20px; }
-  
+
 p.back-link {
   text-align: center;
   margin-bottom: 20px;

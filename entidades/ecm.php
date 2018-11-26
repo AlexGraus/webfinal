@@ -27,7 +27,7 @@
     public function insertar(){
       $db= new Conexion();
       $obj= new stdClass();
-      $sql ="INSERT INTO seguimiento_ecm (fecha, diagnostico, plan_clinico, observacion, fecha_HDTE, hacer_BAAF)
+      $sql =" INSERT INTO seguimiento_ecm (fecha, diagnostico, plan_clinico, observacion, fecha_HDTE, hacer_BAAF)
       VALUES ('$this->fecha','$this->diagnostico','$this->plan_clinico','$this->observacion','$this->fecha_HDTE','$this->hacer_BAAF')";
       if ($db->query($sql)) {
         $obj->message = "registro correcto";

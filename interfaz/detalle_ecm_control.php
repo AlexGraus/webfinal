@@ -1,8 +1,9 @@
 <?php
 include ('menu.php');
 include ('../entidades/paciente.php');
-include ('../entidades/controlespapivaa.php');
+include ('../entidades/control_seguimiento.php');
  ?>
+
 	<!--/.sidebar-->
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -12,7 +13,7 @@ include ('../entidades/controlespapivaa.php');
 						<em class="fa fa-home"></em>
 					</a></li>
 				<li class="active"></li>
-				Control de PAP IVA VPH
+				Control ECM y BAFF
 			</ol>
 		</div>
 		<!--/.row-->
@@ -27,7 +28,7 @@ include ('../entidades/controlespapivaa.php');
 				<div class="col-md-6">
 				<?php 			$id = $_GET['id'];
 								$pacientes = Paciente::constructorvacio();
-								$resultados=$pacientes->buscarPacienteControles($id);
+								$resultados=$pacientes->buscarPacienteECM($id);
 						if($fila=mysqli_fetch_array($resultados)){
 				?>
 						<div class = 'form-group'>
@@ -39,8 +40,8 @@ include ('../entidades/controlespapivaa.php');
                 </div>
 				<div class="col-md-6">
 				<div class="form-group">
-							<label>Tipo Examen: </label>
-							 <input class="form-control" value = '<?php echo $fila['tipoexamen']?>' disabled>
+							<label>Diagnostico ECM: </label>
+							 <input class="form-control" value = '<?php echo $fila['diagnostico']?>' disabled>
 						</div>
 				</div>
 			<?php }?>
@@ -52,42 +53,40 @@ include ('../entidades/controlespapivaa.php');
 		<div class="panel-heading">Nuevo Control</div>
 			<div class="panel-body">
 				<div class="col-md-4">
-				<form id="id_form" role="form" method="get" action = "../persistencia/detalleDAO_pap_iva.php";>
+				<form id="id_form" role="form" method="get" action = "../persistencia/detalleDAO_seguimiento.php"?>
 						<div class="form-group">
 							<label>Fecha </label>
-							<input type="date" name="fecha" class="form-control" required>
+							<input type="date" name="fecha_control" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Descripción </label>
-							<textarea name="descripcion" rows="5" cols="43" required></textarea>
+							<textarea name="descripcion" rows="5" cols="43"  required></textarea>
 						</div>
 						<input type="hidden" name="oculto" value=<?php if(isset($_GET['id']))  echo $_GET['id'] ?>>
-            <div class="" align="center">
-              <button type="submit" class="btn btn-primary">Registrar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="seguimiento_pap_ivaa.php" class="btn btn-return">Regresar</a>
-            </div>
+						<div class="form grup"align="center" >
+							<button type="submit" class="btn btn-primary" >Registrar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="control_ecm_baf.php" class="btn btn-return">Regresar</a>
+						</div>
 
                 </form>
                 </div>
 				<div class="col-md-8">
-				<table id="controles" class="display nowrap">
+				<table id="ecm_baaf" class="display nowrap">
 					<thead>
 					<tr>
-						<th scope="col">Tipo Examen</th>
-     					<th scope="col">Fecha</th>
-     					<th scope="col">Descripción</th>
+     					<th scope="col">Fecha de Control</th>
+     					<th scope="col">Descripción del Control</th>
 					</tr>
 					</thead>
 					<tbody>
 						<?php
 								$id = $_GET['id'];
-								$controles = ControlesPapivaa::vacio();
-								$resultados=$controles->controlesPaciente($id);
+								$controles = ControlSeguimiento::constructorvacio();
+								$resultados=$controles->buscarSeguimiento($id);
 								while ($filas = mysqli_fetch_array($resultados)) {
 								?>
 									<tr>
-									<td><?php echo $filas['nombreexamen']; ?></td>
-									<td><?php echo $filas['fechacontrol']; ?></td>
+									<td><?php echo $filas['fecha']; ?></td>
 									<td><?php echo $filas['descripcion']; ?></td>
 
 									</tr>
@@ -110,25 +109,24 @@ include ('../entidades/controlespapivaa.php');
 	<!--/.main-->
 
 	 <!-- JQUERY-->
-	 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
         <!-- DATATABLES Y BUTTONS-->
-
+	<script src="../js/jquery-3.3.1.min.js"></script>
  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
+   <script src="../js/control_ecm_baf.js"></script>
+<!-- <script src="../js/listarseguimientos.js"></script>-->
+		 <!-- DATATABLES Y BUTTONS-->
+<script src="../js/detallecontroles.js"></script>
+<script src="../js/listarseguimientos.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/chart.min.js"></script>
+<script src="../js/chart-data.js"></script>
+<script src="../js/easypiechart.js"></script>
+<script src="../js/easypiechart-data.js"></script>
+<script src="../js/bootstrap-datepicker.js"></script>
+<script src="../js/custom.js"></script>
 
 
-         <script src="../js/detallecontroles.js"></script>
-	<script src="../js/listarseguimientos.js"></script>
-
-
-
-
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/chart.min.js"></script>
-	<script src="../js/chart-data.js"></script>
-	<script src="../js/easypiechart.js"></script>
-	<script src="../js/easypiechart-data.js"></script>
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/custom.js"></script>
 </body>
 
 </html>

@@ -90,7 +90,7 @@ class Paciente
         $result = $conectar->query($sql);
         return $result;
     }
-    
+
     public function buscarPacienteMamografia($id){
         $conectar = new Conexion();
         $sql = "SELECT p.nombres_apellidos,se.nombreexamen FROM seguimiento_mamografia as se inner join paciente as p on se.dnipaciente = p.dni
@@ -99,6 +99,16 @@ class Paciente
         return $result;
     }
 
+    public function buscarPacienteECM($id)
+    {
+      $conectar = new Conexion();
+      $sql="SELECT p.nombres_apellidos, ecm.diagnostico from seguimiento as se
+      INNER JOIN paciente as p on se.dni_paciente=p.dni
+      inner JOIN seguimiento_ecm as ecm on se.ecm_id=ecm.id
+      WHERE se.id = $id";
+      $result = $conectar->query($sql);
+      return $result;
+    }
 
 }
 

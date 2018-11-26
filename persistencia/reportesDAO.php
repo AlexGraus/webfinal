@@ -12,10 +12,10 @@
 
 
 		//Traer contador de controles
-		
-		$queryContador = $controles ->mostrarCantidad(); 
+
+		$queryContador = $controles ->mostrarCantidad();
         $resultadoContador = $cn->query($queryContador);
-        
+
 		if($fila = mysqli_fetch_array($resultadoContador)){
 			$cantidadTotal = $fila['contador'];
 			$cantidadDetalle = $cantidadTotal;
@@ -58,14 +58,14 @@
 							$c++;
 						}
 					}
-					
+
 				$salida.='	</tr>
 					</thead>
 				<tbody>';
 
 				$descripcion;
 				while($filas = mysqli_fetch_array($resultado)){
-					
+
 					$salida.='<tr>
 						<td> '.$filas['codigoseguimientopapivaa'].' </td>
 						<td> '.$filas['nombres_apellidos'].' </td>
@@ -87,11 +87,11 @@
 					$salida.='<td> '.$filas['motivoreferencia'].' </td>
 						<td> '.$filas['procedimientodx'].' </td>
 						<td> '.$filas['procedimientotto'].' </td>';
-						
-						
+
+
 						//Buscar Detalle
 						$codigoseguir = $filas['codigoseguimientopapivaa'];
-						$queryDetalle = $controles ->buscarDetalle($codigoseguir); 
+						$queryDetalle = $controles ->buscarDetalle($codigoseguir);
 						$resultadoDetalle = $cn->query($queryDetalle);
 
 						//Resultado de la consulta
@@ -99,7 +99,7 @@
 						if(isset($cantidadDetalle)){
 							$detalle = $cantidadDetalle-$cantidadFilas;
 						}
-						
+
 
 
 						if($resultadoDetalle->num_rows > 0){
@@ -122,9 +122,9 @@
 								}
 							}
 						}
-					
 
-	
+
+
 					$salida.='</tr>';
                 }
 				$salida.='
@@ -136,4 +136,3 @@
 			}
 	echo $salida;
 ?>
-
