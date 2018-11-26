@@ -46,7 +46,7 @@
       baf.medico_realiza, baf.medico_supervisa, baf.patologo, baf.fecha_entrega FROM seguimiento as se
       join seguimiento_ecm as ecm on se.ecm_id=ecm.id
       inner JOIN seguimiento_baaf as baf on se.id=baf.seguimiento_id
-      join paciente as p on se.dni_paciente=p.dni ";
+      join paciente as p on se.dni_paciente=p.dni";
       return  $sql;
     }
     public function buscarsegimientoPaciente($dni)

@@ -23,5 +23,21 @@
         $resul=$db->query($sql);
         return $resul;
     }
+
+    public function contardorPacientes(){
+        $db= new Conexion();
+        $sql =" SELECT COUNT(*) as cantidad FROM paciente";
+        $resul=$db->query($sql);
+        return $resul;
+    }
+
+    public function contadorECM(){
+        $db= new Conexion();
+        $sql =" SELECT COUNT(*) as cantidad FROM seguimiento";
+        $resul=$db->query($sql);
+        return $resul;
+    }
+
+
   }
 ?>

@@ -2,6 +2,7 @@
 <?php
 include ('menu.php');
  ?>
+
 	<!--/.sidebar-->
   <!--/.----------------------------------------------------------------------------------------->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -20,11 +21,13 @@ include ('menu.php');
 		</div>
 		<!--/.row-->
 <!--/ crear metodos para mostrar estadisticas de digitacion en los diferentes examenes de seguimiento-->
+		<div class="panel panel-default">
+		<div class="panel-heading">Registros Totales</div>
 		<div class="panel panel-container">
 			<div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-blue"></em>
+						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
 						<?php
 							include ('../entidades/extras.php');
 							$extra = Contador::vacio();
@@ -38,22 +41,7 @@ include ('menu.php');
 					</div>
 				</div>
 
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-blue panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-orange"></em>
-							<div class="large">20</div>
-							<div class="text-muted">ECM Anormal</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">BAFF</div>
-						</div>
-					</div>
-				</div>
+				
 				<?php
 					//include ('../entidades/extras.php');
 				//	$extra = Contador::vacio();
@@ -91,52 +79,67 @@ include ('menu.php');
 				</div>
 						<?php }?>
 
+
+						<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
+
+						 <?php $cantidad = $extra->contadorECM();
+						 if($fila=mysqli_fetch_array($cantidad)){?>
+							<div class="large"><?php echo $fila['cantidad']?></div>
+						 <?php }?>
+							<div class="text-muted">ECM</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding"><em class="fa fa-xl fa-users color-blue"></em>
+						 <?php  $cantidad = $extra->contardorPacientes(); 
+						 if($fila=mysqli_fetch_array($cantidad)){?>
+							<div class="large"><?php echo $fila['cantidad']?></div>
+						 <?php }?>
+							<div class="text-muted">Pacientes</div>
+						</div>
+					</div>
+				</div>				
+			</div>
 			</div>
 <!--/ crear metodos para mostrar estadisticas de digitacion en los diferentes examenes de seguimiento-->
 <!--/ .Row-->
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						Estadisticas
-						<ul class="pull-right panel-settings panel-button-tab-right">
-							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-									<em class="fa fa-cogs"></em>
-								</a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li>
-										<ul class="dropdown-settings">
-											<li><a href="#">
-													<em class="fa fa-cog"></em>
-												</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-													<em class="fa fa-cog"></em>
-												</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-													<em class="fa fa-cog"></em>
-												</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-						</div>
+		
+		<div class="panel panel-default">
+				<div class="panel-heading">Estadísticas</div>
+				<div class="panel-body">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="">Resultados Mamografía</label>
+						<canvas id="myChart" ></canvas>
+						
+						
 					</div>
 				</div>
-			</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="">Resultados ECM</label>
+
+						<canvas id="myChart2" ></canvas>
+						
+					</div>
+				</div>
+				</div>
 		</div>
+	
 		<!--/.row-->
 
 	</div>
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 
-<?php require_once "scriptsjs.php"; ?>
+<script src="../js/Chart.min.js"></script>
+<script src="../js/graficosreports.js"></script>
+
 
 </body>
 </html>
