@@ -30,7 +30,8 @@ include ('menu.php');
 						</div>
 						<div class="form-group">
 							<label>DNI</label>
-							<input id="dni"  name="dnipaciente" class="form-control" placeholder="Ingrese DNI" required>
+              <?php include_once 'scriptsbaf.php'; ?>
+							  <input type="text" id="dni"  name="dni" class="form-control" placeholder="Ingrese DNI" onkeypress="return solonumeros(event)" onpaste="return false" required/>
 						</div>
 						<div class="form-group">
 							<label>Fecha de Nacimiento</label>
@@ -61,7 +62,12 @@ include ('menu.php');
 						</div>
 						<div class="form-group">
 							<label>Seguro</label>
-							<input name="sispaciente" placeholder="Ingrese Seguro" class="form-control" >
+              <select class="form-control" name="sispaciente">
+                <option value="SIS">SIS</option>
+                <option value="ESSALUD">ESSALUD</option>
+                <option value="NO TIENE">NO TIENE</option>
+                <option value="MAPFRE">OTRO</option>
+              </select>
 						</div>
 						<input type="submit" class="btn btn-primary"  value ="Registrar">
 					</div>

@@ -1,4 +1,5 @@
 <script src="../js/idiomas_mamografia.js"></script>
+
 <?php
 
 		include ("../entidades/conexion.php");
@@ -38,12 +39,12 @@
 						<th>Fecha de Examen</th>
 						<th>Nombres Apellidos</th>
 						<th>Examen</th>
+						<th>Diagnóstico</th>
 						<th>HC/BOL</th>
 						<th>DNI</th>
 						<th>Procedencia</th>
 						<th>Edad</th>
 						<th>Fecha de Nacimiento</th>
-						<th>Diagnóstico</th>
 						<th>Fecha de Ecografía</th>
 						<th>Resultado de Ecografía</th>';
 						$c = 1;
@@ -66,12 +67,12 @@
 						<td> '.$filas['fechaexamen'].' </td>
 						<td> '.$filas['nombres_apellidos'].' </td>
 						<td> '.$filas['nombreexamen'].' </td>
+						<td> '.$filas['diagnostico'].' </td>
 						<td> '.$filas['historiaclinica'].' </td>
 						<td> '.$filas['dni'].' </td>
 						<td> '.$filas['centroprocedencia'].' </td>
 						<td> '.$filas['edad'].' </td>
 						<td> '.$filas['fecha_nacimiento'].' </td>
-						<td> '.$filas['diagnostico'].' </td>
                         <td> '.$filas['fechaecografia'].' </td>
                         <td> '.$filas['resultado'].' </td>
                         ';

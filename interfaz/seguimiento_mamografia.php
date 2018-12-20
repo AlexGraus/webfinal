@@ -26,7 +26,8 @@ include ('menu.php');
 				<div class="col-md-6">
 					<div class="form-group">
 							<label for="caja_busqueda">DNI</label>
-							<input name="dnipaciente" id="caja_busqueda" class="form-control" placeholder="Buscar DNI">
+              <?php include_once 'scriptsbaf.php'; ?>
+                <input type="text" id="caja_busqueda"  name="dnipaciente" class="form-control" placeholder="Buscar DNI" onkeypress="return solonumeros(event)" onpaste="return false" required/>
 						</div>
 
 				</div>

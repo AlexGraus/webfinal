@@ -17,25 +17,27 @@
 
         public function insertarControl(){
             $db= new Conexion();
-            $sql = "INSERT INTO control_mamografia(nombremamografia,codigoseguimientomamografia)
+            $sql = "INSERT INTO control_mamografia(nombremamografia,codigoreferenciamamografia)
             VALUES ('$this->mamografianombre','$this->codigoseguimientomamografia')";
            return $db->query($sql);
           }
 
           public function mostrarPreview(){
-            $sql ="SELECT S.idmamografia,s.fechaexamen,p.nombres_apellidos,s.nombreexamen,p.historiaclinica,p.dni,s.centroprocedencia,
-            p.edad,p.fecha_nacimiento,s.diagnostico,e.fechaecografia,e.resultado FROM seguimiento_mamografia as s inner join paciente as p on s.dnipaciente = p.dni
-                                        inner join ecografia e on s.idecografia = e.idecografia
-                                        inner join control_mamografia as ct on s.idmamografia = ct.codigoseguimientomamografia
-                                        where s.nombreexamen = 'MX. BILATERAL'";
+            $sql ="SELECT sm.idmamografia,sm.fechaexamen,p.nombres_apellidos,sm.nombreexamen,p.historiaclinica,p.dni,sm.centroprocedencia,
+            p.edad,p.fecha_nacimiento,sm.diagnostico,ec.fechaecografia,ec.resultado FROM seguimiento_mamografia as sm inner join paciente as p on sm.dnipaciente = p.dni
+                inner join referencia_mamografia as rm on sm.idmamografia= rm.idexamen 
+                inner join ecografia as ec on rm.idecografia= ec.idecografia
+                inner join control_mamografia as cm on rm.idreferencia = cm.codigoreferenciamamografia
+                where sm.nombreexamen = 'MX. BILATERAL'";
             return $sql;
           }
           public function buscarMamografiaDni($dni){
-            $consultaDni = "SELECT S.idmamografia,s.fechaexamen,p.nombres_apellidos,s.nombreexamen,p.historiaclinica,p.dni,s.centroprocedencia,
-            p.edad,p.fecha_nacimiento,s.diagnostico,e.fechaecografia,e.resultado FROM seguimiento_mamografia as s inner join paciente as p on s.dnipaciente = p.dni
-                                        inner join ecografia e on s.idecografia = e.idecografia
-                                        inner join control_mamografia as ct on s.idmamografia = ct.codigoseguimientomamografia
-                                        where s.nombreexamen = 'MX. BILATERAL' AND p.dni like '%".$dni."%' ";
+            $consultaDni = "SELECT sm.idmamografia,sm.fechaexamen,p.nombres_apellidos,sm.nombreexamen,p.historiaclinica,p.dni,sm.centroprocedencia,
+            p.edad,p.fecha_nacimiento,sm.diagnostico,ec.fechaecografia,ec.resultado FROM seguimiento_mamografia as sm inner join paciente as p on sm.dnipaciente = p.dni
+                inner join referencia_mamografia as rm on sm.idmamografia= rm.idexamen 
+                inner join ecografia as ec on rm.idecografia= ec.idecografia
+                inner join control_mamografia as cm on rm.idreferencia = cm.codigoreferenciamamografia
+                where sm.nombreexamen = 'MX. BILATERAL' AND p.dni like '%".$dni."%' ";
             return $consultaDni;
         }
 
@@ -46,26 +48,27 @@
              return $sql;
          }
          public function buscarCodigoSeguimiento($codigoseguimiento){
-             $sql = "SELECT cs.descripcionbilateral FROM controles_bilateral as cs inner join control_mamografia as c on cs.codigocontrol = c.idcontrol_mamografia
-             where c.codigoseguimientomamografia =  $codigoseguimiento";
+             $sql = "SELECT cs.descripcionbilateral FROM controles_bilateral as cs inner join control_mamografia as c on cs.codigocontrol = 				c.idcontrol_mamografia inner join referencia_mamografia as rf on c.codigoreferenciamamografia = 						rf.idreferencia inner join seguimiento_mamografia as se on rf.idexamen = se.idmamografia
+             where se.idmamografia =  $codigoseguimiento";
               return $sql;
          }
 
          public function controlesPacienteMamografia($id){
             $conectar = new Conexion();
-            $sql = " SELECT se.nombreexamen,cb.fechabilateral,cb.descripcionbilateral FROM  seguimiento_mamografia as se inner join control_mamografia as cm on se.idmamografia = cm.codigoseguimientomamografia inner join controles_bilateral as cb on cm.idcontrol_mamografia = cb.codigocontrol
-            Where se.idmamografia =$id";
+            $sql = " SELECT se.nombreexamen,cb.fechabilateral,cb.descripcionbilateral FROM  referencia_mamografia as r inner join   seguimiento_mamografia as se on r.idexamen = se.idmamografia inner join control_mamografia as cm on r.idreferencia = cm.codigoreferenciamamografia inner join controles_bilateral as cb on cm.idcontrol_mamografia = cb.codigocontrol
+            Where se.idmamografia = $id";
             $result = $conectar->query($sql);
             return $result;
         }
 
 
         public function buscarPorFechasMamografia($fechaInicio,$fechaFin){
-            $sql="SELECT S.idmamografia,s.fechaexamen,p.nombres_apellidos,s.nombreexamen,p.historiaclinica,p.dni,s.centroprocedencia,
-            p.edad,p.fecha_nacimiento,s.diagnostico,e.fechaecografia,e.resultado FROM seguimiento_mamografia as s inner join paciente as p on s.dnipaciente = p.dni
-                                        inner join ecografia e on s.idecografia = e.idecografia
-                                        inner join control_mamografia as ct on s.idmamografia = ct.codigoseguimientomamografia
-                                        where s.nombreexamen = 'MX. BILATERAL' and s.fechaexamen  BETWEEN '".$fechaInicio."%' AND '".$fechaFin."%' ";
+            $sql="SELECT sm.idmamografia,sm.fechaexamen,p.nombres_apellidos,sm.nombreexamen,p.historiaclinica,p.dni,sm.centroprocedencia,
+            p.edad,p.fecha_nacimiento,sm.diagnostico,ec.fechaecografia,ec.resultado FROM seguimiento_mamografia as sm inner join paciente as p on sm.dnipaciente = p.dni
+                inner join referencia_mamografia as rm on sm.idmamografia= rm.idexamen 
+                inner join ecografia as ec on rm.idecografia= ec.idecografia
+                inner join control_mamografia as cm on rm.idreferencia = cm.codigoreferenciamamografia
+                where sm.nombreexamen = 'MX. BILATERAL' AND  sm.fechaexamen BETWEEN '".$fechaInicio."%' AND '".$fechaFin."%' ";
             return $sql;
     }
 

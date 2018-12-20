@@ -33,24 +33,24 @@
 				$salida.='<table id="myTable" class="display nowrap">
 				<thead>
 					<tr>
-					
 						<th>ID</th>
 						<th>Nombres y Apellidos</th>
+						<th>Tipo de Examen</th>
+						<th>Resultados</th>
 						<th>Edad</th>
 						<th>Fecha de Nacimiento</th>
 						<th>Dni</th>
 						<th>Teléfono</th>
 						<th>Teléfono 2</th>
-						<th>Tipo de Examen</th>
 						<th>Fecha de Toma</th>
-						<th>Fecha de Entrega</th>
-						<th>Resultados</th>
 						<th>E.S al que se refiere</th>
 						<th>Responsable</th>
-						<th>Referencia Efectiva</th>
+						<th>Referencia</th>
 						<th>Motivo de referencia</th>
-						<th>Procedimiento DX</th>
-						<th>Procedimiento TTO</th>';
+						<th>Fecha de Referencia </th>
+						<th>Procedimiento </th>
+						<th>Resultado Procedimiento</th>
+						<th>Tratamiento </th>';
 						$c = 1;
 					if(isset($cantidadTotal)){
 						while($cantidadTotal > 0){
@@ -66,30 +66,27 @@
 
 				$descripcion;
 				while($filas = mysqli_fetch_array($resultado)){
-					
 					$salida.='<tr>
 						<td> '.$filas['codigoseguimientopapivaa'].' </td>
 						<td> '.$filas['nombres_apellidos'].' </td>
+						<td> '.$filas['tipoexamen'].' </td>
+						<td> '.$filas['resultados'].' </td>
 						<td> '.$filas['edad'].' </td>
 						<td> '.$filas['fecha_nacimiento'].' </td>
 						<td> '.$filas['dni'].' </td>
 						<td> '.$filas['telefono'].' </td>
 						<td> '.$filas['telefono2'].' </td>
-						<td> '.$filas['tipoexamen'].' </td>
 						<td> '.$filas['fechaexamen'].' </td>
-						<td> '.$filas['fechaentrega'].' </td>
-						<td> '.$filas['resultados'].' </td>
 						<td> '.$filas['establecimientoreferencia'].' </td>
 						<td> '.$filas['responsable'].' </td>';
-						if(strcmp($filas['referenciaefectiva'],'1')==0){
-						 $salida.='	<td> Si</td>';
-						}else{
-						$salida.='	<td> No</td>';
-						}
 
-					$salida.='<td> '.$filas['motivoreferencia'].' </td>
-						<td> '.$filas['procedimientodx'].' </td>
-						<td> '.$filas['procedimientotto'].' </td>';
+					$salida.='
+						<td> '.$filas['referirvph'].' </td>
+						<td> '.$filas['motivoreferencia'].' </td>
+						<td> '.$filas['fechareferencia'].' </td>
+						<td> '.$filas['procedimiento'].' </td>
+						<td> '.$filas['resultadoprocedimiento'].' </td>
+						<td> '.$filas['tratamiento'].' </td>';
 						
 						
 						//Buscar Detalle

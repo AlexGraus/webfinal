@@ -9,19 +9,20 @@ include ('menu.php');
 				<li><a href="index.php">
 						<em class="fa fa-home"></em>
 					</a></li>
-				<li class="active">Seguimiento ECM y BAF</li>
+				<li class="active">Seguimiento de Pacientes con Referencia ECM</li>
 			</ol>
 	</div>
 	<div class="row">
 		<br>
 	</div>
   <div class="panel panel-default">
-    <div class="panel-heading">Buscar seguimiento paciente</div>
+    <div class="panel-heading">Buscar Paciente</div>
     <div class="panel-body">
         <div class="col-md-6">
 					<div class="form-group">
 							<label for="caja_busqueda">DNI</label>
-							<input name="dnipaciente" id="caja_busqueda" class="form-control" placeholder="Buscar DNI">
+              <?php include_once 'scriptsbaf.php'; ?>
+                <input type="text" id="caja_busqueda"  name="dnipaciente" class="form-control" placeholder="Buscar DNI" onkeypress="return solonumeros(event)" onpaste="return false" required/>
 						</div>
       </div>
 
@@ -43,15 +44,11 @@ include ('menu.php');
 
   </div>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	
 			 <!-- DATATABLES Y BUTTONS-->
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
-
-
-<script src="../js/detallecontroles.js"></script>
-
 <?php require_once "scriptsjs.php"; ?>
-<script src="../js/buscarseguimiento.js"></script>
+<script src="../js/buscarseguimiento.js"></script>  
 </body>
 </html>

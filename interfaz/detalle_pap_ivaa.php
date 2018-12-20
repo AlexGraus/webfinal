@@ -86,7 +86,7 @@ include ('../entidades/controlespapivaa.php');
 								while ($filas = mysqli_fetch_array($resultados)) {
 								?>
 									<tr>
-									<td><?php echo $filas['nombreexamen']; ?></td>
+									<td><?php echo $filas['tipoexamen']; ?></td>
 									<td><?php echo $filas['fechacontrol']; ?></td>
 									<td><?php echo $filas['descripcion']; ?></td>
 

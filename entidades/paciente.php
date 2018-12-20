@@ -18,10 +18,10 @@ class Paciente
     function __construct($dni,$nombres_apellidos,$fecha_nacimiento,$edad,$direccion,$telefono,$telefono2, $grupo_familiar,$historiaclinica,$sis){
         $this->id="";
         $this->dni=$dni;
-        $this->nombres_apellidos=$nombres_apellidos;
+        $this->nombres_apellidos=strtoupper($nombres_apellidos);
         $this->fecha_nacimiento=$fecha_nacimiento;
         $this->edad=$edad;
-        $this->direccion=$direccion;
+        $this->direccion=strtoupper($direccion);
         $this->telefono=$telefono;
         $this->telefono2=$telefono2;
         $this->grupo_familiar=$grupo_familiar;
@@ -65,7 +65,16 @@ class Paciente
     {
         # code...
     }
-
+    public function buscarRepetido($dni){
+			$db= new Conexion();
+			$sql="SELECT * FROM paciente WHERE dni= '$dni' ";
+			$resultado=$db->query($sql);
+			if (mysqli_num_rows($resultado) >0 ) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
     public function buscarPorDni($dni){
         $db = new Conexion();
         $sql = "SELECT *FROM paciente WHERE dni = '.$dni.'";
@@ -104,10 +113,10 @@ class Paciente
     public function buscarPacienteECM($id)
     {
       $conectar = new Conexion();
-      $sql="SELECT p.nombres_apellidos, ecm.diagnostico from seguimiento as se
-      INNER JOIN paciente as p on se.dni_paciente=p.dni
-      inner JOIN seguimiento_ecm as ecm on se.ecm_id=ecm.id
-      WHERE se.id = $id";
+      $sql="SELECT p.nombres_apellidos, ecm.diagnostico from examen_ecm as ecm
+      INNER JOIN paciente as p  on p.dni=ecm.paciente_dni
+      inner JOIN referencia_ecm as ref on ref.examen_ecm_id=ecm.id
+      WHERE ref.id = $id";
       $result = $conectar->query($sql);
       return $result;
     }

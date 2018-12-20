@@ -30,7 +30,7 @@ class Establecimiento{
 
     public function mostrar(){
         $db= new Conexion();
-        $sql="SELECT * FROM establecimiento ";
+        $sql="SELECT * FROM establecimiento order by codigo asc ";
         $resultado=$db->query($sql);
         return $resultado;
     }

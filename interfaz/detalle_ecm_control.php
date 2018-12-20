@@ -13,7 +13,7 @@ include ('../entidades/control_seguimiento.php');
 						<em class="fa fa-home"></em>
 					</a></li>
 				<li class="active"></li>
-				Control ECM y BAFF
+				Registrar Seguimiento de Paciente
 			</ol>
 		</div>
 		<!--/.row-->
@@ -56,7 +56,7 @@ include ('../entidades/control_seguimiento.php');
 				<form id="id_form" role="form" method="get" action = "../persistencia/detalleDAO_seguimiento.php"?>
 						<div class="form-group">
 							<label>Fecha </label>
-							<input type="date" name="fecha_control" class="form-control" required>
+								<input name="fecha_control" type="date" class="form-control" min="1940-04-01" >
 						</div>
 						<div class="form-group">
 							<label>Descripción </label>
@@ -74,19 +74,19 @@ include ('../entidades/control_seguimiento.php');
 				<table id="ecm_baaf" class="display nowrap">
 					<thead>
 					<tr>
-     					<th scope="col">Fecha de Control</th>
-     					<th scope="col">Descripción del Control</th>
+     					<th scope="col">Fecha de Seguimiento</th>
+     					<th scope="col">Descripción del Seguimiento</th>
 					</tr>
 					</thead>
 					<tbody>
 						<?php
 								$id = $_GET['id'];
 								$controles = ControlSeguimiento::constructorvacio();
-								$resultados=$controles->buscarSeguimiento($id);
+								$resultados=$controles->buscarSeguimiento($id); 
 								while ($filas = mysqli_fetch_array($resultados)) {
 								?>
 									<tr>
-									<td><?php echo $filas['fecha']; ?></td>
+									<td><?php echo $filas['fecha_seg']; ?></td>
 									<td><?php echo $filas['descripcion']; ?></td>
 
 									</tr>
@@ -116,8 +116,7 @@ include ('../entidades/control_seguimiento.php');
    <script src="../js/control_ecm_baf.js"></script>
 <!-- <script src="../js/listarseguimientos.js"></script>-->
 		 <!-- DATATABLES Y BUTTONS-->
-<script src="../js/detallecontroles.js"></script>
-<script src="../js/listarseguimientos.js"></script>
+
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/chart.min.js"></script>
 <script src="../js/chart-data.js"></script>

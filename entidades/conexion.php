@@ -4,7 +4,7 @@
 	{
 
 		private $servidor='localhost';
-		private $basededatos='smsmama';
+		private $basededatos='programas';
 		private $usuario='root';
 		private $clave='';
 

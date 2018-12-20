@@ -6,7 +6,10 @@
 	<title>RED DE SALUD - TRUJILLO</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
+	<link  rel = "shortcut icon"  href = "img/favicon.ico"  type = "image /x-icon" >
 	<link href="css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="alertify/css/alertify.css">
+	<link rel="stylesheet" href="alertify/css/themes/default.css">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
@@ -46,7 +49,8 @@
 	</div><!-- /.row -->
 
 
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>

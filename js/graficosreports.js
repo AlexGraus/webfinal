@@ -14,7 +14,7 @@ $(document).ready(function(){
                 if(valores[contador].diagnostico != null){
                     diagnosticos.push(valores[contador].diagnostico);
                     resultado.push(valores[contador].resultados);
-                }     
+                }
             }
 
             var datosChart = {
@@ -22,9 +22,9 @@ $(document).ready(function(){
                 datasets:[{
                     label: 'Resultados',
                     backgroundColor: [
-                        'rgb(255,99,132,0.6)',
-                        'rgb(54,162,235,0.6)',
-                        'rgb(247, 255, 2,0.6)',
+                        'rgb(89, 17, 245)',
+                        'rgb(255, 205, 17)',
+                        'rgb(255, 107, 17)',
                         'rgb(255, 55, 55,0.6)',
                         'rgb(153,102,255,0.6)',
                         'rgb(255,159,64,0.6)',
@@ -66,9 +66,9 @@ $(document).ready(function(){
 
             for(var contador in valores){
                 if(valores[contador].diag != null){
-                    diagnosticos.push(valores[contador].diag);
+                  diagnosticos.push(valores[contador].diag);
                     resultado.push(valores[contador].result);
-                }     
+                }
             }
 
             var datosChart = {
@@ -76,13 +76,11 @@ $(document).ready(function(){
                 datasets:[{
                     label: 'Resultados',
                     backgroundColor: [
-                        'rgb(255,99,132,0.6)',
-                        'rgb(54,162,235,0.6)',
-                        'rgb(247, 255, 2,0.6)',
-                        'rgb(255, 55, 55,0.6)',
-                        'rgb(153,102,255,0.6)',
-                        'rgb(255,159,64,0.6)',
-                        'rgb(24, 255, 1,0.6)'
+                        'rgb(255, 87, 51)',
+                        'rgb(50, 220, 166)',
+                        'rgb(150, 23, 222)',
+                        'rgb(170, 20, 222)'
+
                     ],
                   /*  borderColor: 'rbga(200,200,200,0.75)',
                     hoverBackgraoundColor:'rbga(200,200,200,0.75)',
@@ -95,7 +93,7 @@ $(document).ready(function(){
             var newChar = $('#myChart2');
 
             var charGrafico = new Chart(newChar,{
-                type: 'bar',
+                type: 'doughnut',
                 data: datosChart
             })
 
@@ -105,5 +103,3 @@ $(document).ready(function(){
         }
     })
 });
-
-

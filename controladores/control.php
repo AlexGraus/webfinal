@@ -1,4 +1,4 @@
-<?php 	
+<?php
 	include ('../entidades/usuario.php');
 	//recuperando valores del formulario
 		if (! isset($_SESSION['login'])) {

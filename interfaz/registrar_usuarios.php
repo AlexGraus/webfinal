@@ -1,5 +1,8 @@
 <?php
 include ('menu.php');
+if ($fila['tipo']!="Administrador") {
+  echo "<script language='javascript'>window.location='index.php'</script>;";
+}
  ?>
   <!--/.----------------------------------------------------------------------------------------->
   <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -24,7 +27,7 @@ include ('menu.php');
 				<div class="col-md-6">
 						<div class="form-group">
 							<label>Nombres y Apellidos</label>
-							<input name="nombre" class="form-control" placeholder="Nombres y Apellidos" required>
+							<input id="name" name="nombre" class="form-control" placeholder="Nombres y Apellidos" required>
 						</div>
                         <div class="form-group">
 							<label>Email</label>
@@ -56,40 +59,7 @@ include ('menu.php');
 			</div>
 
 		</div>
-		<div class="panel panel-default">
-		<div class="panel-heading">Usuarios Registrados</div>
-		<div class="panel-body">
-			<table class="table table-bordered table-dark">
-				<thead>
-				<tr>
-					<th scope="col">DNI</th>
-						<th scope="col">Nombres y Apellidos</th>
-						<th scope="col">Email</th>
-							<th scope="col">Tipo de Usuario</th>
-				</tr>
-				</thead>
-				<tbody>
-					<?php
-							$usuariitos = Usuario::constructorvacio();
-							$datitos=$usuariitos->mostrartodos();
-							while ($filas = mysqli_fetch_array($datitos)) {
-							?>
-								<tr>
-								<td><?php echo $filas['usuario']; ?></td>
-								<td><?php echo $filas['nombre']; ?></td>
-								<td><?php echo $filas['email']; ?></td>
-								<td><?php echo $filas['tipo']; ?></td>
-								</tr>
 
-							<?php
-							}
-					 ?>
-				</tbody>
-
-
-			</table>
-		</div>
-	</div>
 	</div>
 
 <?php require_once "scriptsjs.php"; ?>

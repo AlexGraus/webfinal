@@ -2,6 +2,8 @@ $(document).ready(function() {
     $('#controles').DataTable( {
         responsive: true,
         dom: 'Bfrtip',
+
+
        /* buttons: [
             
             /* {

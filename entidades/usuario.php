@@ -23,7 +23,7 @@
 			return new self('','','','','');
 		}
 
-		
+
 		public function insertar()
 		{
 			$db= new Conexion();

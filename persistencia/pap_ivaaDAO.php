@@ -1,7 +1,5 @@
 <?php
-      include ('../entidades/paciente.php');      
       include ('../entidades/papivaa.php');
-      include ('../entidades/controlespapivaa.php');
 
       //Paciente
 
@@ -9,28 +7,22 @@
 
     //PAP E IVAA
         $fechaexamen = $_GET['fechaexamen'];
-        $fechaentrega= $_GET['fechaentrega'];	
-        $establecimientoreferencia =$_GET['establecimientoorigen'];	
-        $establecimientoatencion = $_GET['establecimientodestino'];	
-        $responsable = $_GET['responsable'];
+        $establecimientoreferencia =$_GET['centroreferencia'];
+        $establecimientoatencion = $_GET['centroatencion'];
+        $referenciar = $_GET['realizar'];
         $resultados = $_GET['resultados'];
         $tipoexamen = $_GET['examenes'];
-        $motivoreferencia = $_GET['motivoreferencia'];	
-        $procedimientotto = $_GET['procedimientotto'];	
-        $procedimientodx = $_GET['procedimiendodx'];	
-        $referenciaefectiva = $_GET['referenciaefectiva'];	
+        $motivoreferencia = $_GET['motivoreferencia'];
+        $personal = $_GET['personal'];
 
-        $papeivaa = new Papivaa($fechaexamen,$fechaentrega,$establecimientoreferencia,$establecimientoatencion,$responsable, $resultados, $tipoexamen,$motivoreferencia,$procedimientotto,$procedimientodx,$referenciaefectiva,$codigopaciente);
-        
+        $papeivaa = new Papivaa($fechaexamen,$establecimientoreferencia,$establecimientoatencion,
+        $personal,$resultados,$tipoexamen, $motivoreferencia,$referenciar,$codigopaciente);
+
         $link = $papeivaa->insertarExamen();
-        
-    //Controles
-         $codigoseguimineto = $papeivaa->obtenerUltimoRegistro($link);
-        $control = new ControlesPapivaa($tipoexamen,$codigoseguimineto);
-        $control->insertarControl();
+
+
+       header("Location: ../interfaz/pap_ivaa.php");
 
 
 
-    header("Location: ../interfaz/pap_ivaa.php");
-  
 ?>

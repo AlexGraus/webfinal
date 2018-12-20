@@ -16,7 +16,7 @@
         $resul=$db->query($sql);
         return $resul;
     }
-   
+
     public function contadorMamografia(){
         $db= new Conexion();
         $sql =" SELECT nombreexamen, COUNT(*) as cantidad from seguimiento_mamografia group by nombreexamen";
@@ -33,7 +33,7 @@
 
     public function contadorECM(){
         $db= new Conexion();
-        $sql =" SELECT COUNT(*) as cantidad FROM seguimiento";
+        $sql =" SELECT COUNT(*) as cantidad FROM examen_ecm";
         $resul=$db->query($sql);
         return $resul;
     }

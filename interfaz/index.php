@@ -27,7 +27,7 @@ include ('menu.php');
 			<div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
+						<div class="row no-padding"><em class="	glyphicon fa-xl glyphicon-list-alt color-red"></em>
 						<?php
 							include ('../entidades/extras.php');
 							$extra = Contador::vacio();
@@ -41,7 +41,7 @@ include ('menu.php');
 					</div>
 				</div>
 
-				
+
 				<?php
 					//include ('../entidades/extras.php');
 				//	$extra = Contador::vacio();
@@ -51,17 +51,17 @@ include ('menu.php');
 				?>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
+						<div class="row no-padding"><em class="glyphicon fa-xl glyphicon-edit color-red"></em>
 							<div class="large"><?php  echo $fila['cantidad']; ?></div>
 							<div class="text-muted"><?php  echo $fila['tipoexamen']; ?> </div>
 						</div>
 					</div>
 				</div>
 				<?php if($fila=mysqli_fetch_array($cantidad)){?>
-	
+
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
+						<div class="row no-padding"><em class="glyphicon fa-xl glyphicon-edit color-red"></em>
 							<div class="large"><?php  echo $fila['cantidad'];?></div>
 							<div class="text-muted"><?php  echo $fila['tipoexamen'];?></div>
 						</div>
@@ -72,7 +72,7 @@ include ('menu.php');
 						 ?>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
+						<div class="row no-padding"><em class="glyphicon fa-xl glyphicon-edit color-red"></em>
 							<div class="large"><?php  echo $fila['cantidad'];?></div>
 							<div class="text-muted"><?php  echo $fila['tipoexamen'];?></div>
 						</div>
@@ -84,7 +84,7 @@ include ('menu.php');
 
 						<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-red"></em>
+						<div class="row no-padding"><em class="fa fa-xl fa-book color-red"></em>
 
 						 <?php $cantidad = $extra->contadorECM();
 						 if($fila=mysqli_fetch_array($cantidad)){?>
@@ -96,43 +96,43 @@ include ('menu.php');
 				</div>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-blue"></em>
-						 <?php  $cantidad = $extra->contardorPacientes(); 
+						<div class="row no-padding"><em class="fa fa-xl fa-female color-blue"></em>
+						 <?php  $cantidad = $extra->contardorPacientes();
 						 if($fila=mysqli_fetch_array($cantidad)){?>
 							<div class="large"><?php echo $fila['cantidad']?></div>
 						 <?php }?>
 							<div class="text-muted">Pacientes</div>
 						</div>
 					</div>
-				</div>				
+				</div>
 			</div>
 			</div>
 <!--/ crear metodos para mostrar estadisticas de digitacion en los diferentes examenes de seguimiento-->
 <!--/ .Row-->
 		</div>
-		
+
 		<div class="panel panel-default">
 				<div class="panel-heading">Estadísticas</div>
 				<div class="panel-body">
 				<div class="col-md-6">
-					<div class="form-group">
-						<label for="">Resultados Mamografía</label>
+					<div class="form-group" >
+						<label for="">Diagnosticos Mamografia</label>
 						<canvas id="myChart" ></canvas>
-						
-						
+
+
 					</div>
 				</div>
 				<div class="col-md-6">
-					<div class="form-group">
-						<label for="">Resultados ECM</label>
+					<div class="form-group"a>
+						<label for="" >Dignosticos ECM</label>
 
 						<canvas id="myChart2" ></canvas>
-						
+
 					</div>
 				</div>
 				</div>
 		</div>
-	
+
 		<!--/.row-->
 
 	</div>
