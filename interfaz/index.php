@@ -110,26 +110,69 @@ include ('menu.php');
 <!--/ crear metodos para mostrar estadisticas de digitacion en los diferentes examenes de seguimiento-->
 <!--/ .Row-->
 		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Filtrar por Fechas</div>
+			<div class="panel-body">
+				<div class="col-md-3">
+						<div class="form-group">
+							<label for="">Fecha Inicio :</label>
+							<input class="form-control" type="date" name="caja" id="caja_busqueda" class="" placeholder="Buscar fecha" >
+						</div>
+                       
+
+				</div>
+				<div class="col-md-3">
+				<div class="form-group">
+							<label for="">Fecha Fin   :</label>
+							<input class="form-control" type="date" name="caja2" id="caja_busqueda2" class="" placeholder="Buscar fecha" >
+						</div>
+					
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+							<label for=""></label>
+							<input class="form-control btn btn-return " type="button" name="search" id="search" value="Buscar" />
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
 
 		<div class="panel panel-default">
 				<div class="panel-heading">Estadísticas</div>
 				<div class="panel-body">
-				<div class="col-md-6">
+				<div class = "row">
+				<div class="col-md-5">
 					<div class="form-group" >
-						<label for="">Diagnosticos Mamografia</label>
-						<canvas id="myChart" ></canvas>
-
-
+						<label for=""  class="form-group">Diagnosticos Mamografia</label>
+						<canvas id="myChart">HOLA</canvas>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="form-group"a>
-						<label for="" >Dignosticos ECM</label>
 
-						<canvas id="myChart2" ></canvas>
-
+				<div class="col-md-5">
+					<div class="form-group">
+						<label    for="" >Diagnosticos ECM</label>
+						<canvas  id="myChart2" ></canvas>
 					</div>
 				</div>
+				</div>
+				<div class = "row">
+				<div class="col-md-5">
+					<div class="form-group">
+						<label   for="" >Diagnosticos IVAA</label>
+						<canvas  id="myChart3" ></canvas>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<label   for="" >Diagnosticos VPH</label>
+						<canvas  id="myChart4" ></canvas>
+					</div>
+				</div>
+				</div>
+	
 				</div>
 		</div>
 
@@ -140,6 +183,7 @@ include ('menu.php');
 	<script src="../js/bootstrap.min.js"></script>
 
 <script src="../js/Chart.min.js"></script>
+
 <script src="../js/graficosreports.js"></script>
 
 

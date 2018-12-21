@@ -21,8 +21,8 @@ function mostrarResultados() {
 
     var listaResultados = {
       VPH: ["POSITIVO", "NEGATIVO"],
-      PAP: ["AGC", "AGC-NOS", "AGC-FN", "ASC", "ASC-H","ASC-US","Carcinoma in situ de cuello uterino","Carcinoma"],
-      IVAA: ["IVAA Negativa", "IVAA Positiva", "LIE", "LIE-AG", "LIE-BG","NIC"]
+      PAP: ["AGC", "AGC-NOS", "AGC-FN", "ASC", "ASC-H","ASC-US","Carcinoma in situ de cuello uterino","Carcinoma", "LIE", "LIE-AG", "LIE-BG","NIC"],
+      IVAA: ["IVAA Negativa", "IVAA Positiva"]
     }
     
     var examenes = document.getElementById('examenes');

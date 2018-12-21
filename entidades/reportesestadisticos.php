@@ -10,8 +10,6 @@
     $ecm = "SELECT diagnostico as diag, COUNT(diagnostico) as result from examen_ecm GROUP BY diagnostico";
     $resultadosEcm = $cn->query($ecm);
 
-
-
     $datosMamografia = array();
 
     foreach($resultadosMamografia as $row){
