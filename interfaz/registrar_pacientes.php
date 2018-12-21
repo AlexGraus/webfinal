@@ -68,10 +68,13 @@ include ('menu.php');
                 <option value="NO TIENE">NO TIENE</option>
                 <option value="MAPFRE">OTRO</option>
               </select>
-						</div>
-						<input type="submit" class="btn btn-primary"  value ="Registrar">
+			  </div>
+			  <div class="col-md-5">
+					</div class="form-control">
+						<input type="submit" class="btn btn-primary btn-lg"  value ="Registrar">
 					</div>
-
+		
+                </div>
 				</form>
 			</div>
 		</div>

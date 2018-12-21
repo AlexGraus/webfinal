@@ -40,9 +40,9 @@ include ('menu.php');
 							<input class="form-control" type="date" name="caja2" id="caja_busqueda2" class="" placeholder="Buscar fecha" >
 						</div>
 						<div class="form-group">
-							<input class="form-control btn btn-return" type="button" name="search" id="search" value="Buscar" />
+							<input class="form-control btn btn-primary btn-lg" type="button" name="search" id="search" value="Buscar" />
 						</div>
-
+			
 				</div>
 
 			</div>

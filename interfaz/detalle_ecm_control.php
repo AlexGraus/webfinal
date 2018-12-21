@@ -64,8 +64,8 @@ include ('../entidades/control_seguimiento.php');
 						</div>
 						<input type="hidden" name="oculto" value=<?php if(isset($_GET['id']))  echo $_GET['id'] ?>>
 						<div class="form grup"align="center" >
-							<button type="submit" class="btn btn-primary" >Registrar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="control_ecm_baf.php" class="btn btn-return">Regresar</a>
+							<button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-ok"></span> Registrar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="control_ecm_baf.php" class="btn btn-return"><span class="glyphicon glyphicon-backward"></span> Regresar</a>
 						</div>
 
                 </form>

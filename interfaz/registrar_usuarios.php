@@ -54,7 +54,7 @@ if ($fila['tipo']!="Administrador") {
 							<label>Contraseña</label>
 							<input name="password" placeholder="Ingrese Contraseña" class="form-control" type="password" required>
 						</div>
-						<input  type="submit" class="btn btn-primary" value="Registrar">
+						<input  type="submit"  class="btn btn-primary btn-lg" value="Registrar">
 					</div>
 
 				</form>

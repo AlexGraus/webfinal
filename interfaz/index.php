@@ -133,8 +133,8 @@ include ('menu.php');
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-							<label for=""></label>
-							<input class="form-control btn btn-return " type="button" name="search" id="search" value="Buscar" />
+							<label for="">  </label>
+							<input class="form-control btn btn-primary btn-lg" type="button" name="search" id="search" value="Buscar" />
 					</div>
 				</div>
 

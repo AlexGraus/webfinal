@@ -45,7 +45,7 @@ if ($fila['tipo']!="Administrador") {
               <input name="distrito" placeholder="Distrito" class="form-control">
             </div>
             <div class="" align="center">
-                  <input name="submit" type="submit" class="btn btn-primary" value="Registrar">
+                  <input name="submit" type="submit"  class="btn btn-primary btn-lg" value="Registrar">
             </div>
                   </form>
 				</div>
@@ -66,7 +66,7 @@ if ($fila['tipo']!="Administrador") {
             <input name="distritito" placeholder="Distrito" class="form-control">
           </div>
           <div class="" align="center">
-                <input name="enviar" type="submit" class="btn btn-return" value="Registrar">
+                <input name="enviar" type="submit"  class="btn btn-primary btn-lg" value="Registrar">
           </div>
           </form>
         </div>
