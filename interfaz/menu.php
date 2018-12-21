@@ -10,7 +10,7 @@
         $dato = $usuario->mostrar($_SESSION['login']);
         $fila = mysqli_fetch_assoc($dato);
 	}
-	if ($fila['tipo']=="Cordinador") {
+	if ($fila['tipo']=="Coordinador") {
 		include ('menu_admin.php');
 	}
 	else {

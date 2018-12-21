@@ -8,13 +8,17 @@ $(document).ready(function() {
 
             switch(data[4]){
 
-                case 'BI-RADS 0': case 'BI-RADS I':
-                case 'BI-RADS III': case 'BI-RADS IV':
-                case 'BI-RADS V': case 'BI-RADS VI':
-                $(row).find('td:eq(4)').css('background-color', '#26FB3C');
-                break;
+                case 'BI-RADS 0': 
+                     $(row).find('td:eq(4)').css('background-color', '#FFFB00');
+                     break;
+                case 'BI-RADS I': case 'BI-RADS II':
+                     $(row).find('td:eq(4)').css('background-color', '#26FB3C');
+                     break;
+                case 'BI-RADS III':
+                     $(row).find('td:eq(4)').css('background-color', '#F65600');
+                     break;
                 default :
-                $(row).find('td:eq(4)').css('background-color', '#F34F39');
+                     $(row).find('td:eq(4)').css('background-color', '#FF0000');
 
             }
             /*

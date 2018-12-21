@@ -9,7 +9,7 @@ include ('menu.php');
 				<li><a href="#">
 						<em class="fa fa-home"></em>
 					</a></li>
-				<li class="active"> Registrar VPH PAP IVAA Anormal</li>
+				<li class="active"> REFERENCIA PAP,IVAA O VPH</li>
 			</ol>
 		</div>
 		<!--/.row-->
@@ -27,7 +27,7 @@ include ('menu.php');
 			<div class="panel-heading">Buscar Paciente</div>
 			<div class="panel-body">
             <div class="col-md-6">
-					<form role="form" method="get" action="../persistencia/referencia_papvph.php">
+					<form id="formrivaa" role="form" method="GET" >
                         <div class="form-group">
                     <label for="caja_busqueda">DNI</label>
                     <?php include_once 'scriptsbaf.php'; ?>
@@ -47,11 +47,11 @@ include ('menu.php');
                         </select>
                     </div>
                     </div>
-                    <div class="col-md-2"> <br>
-                    <div class="">
-                        <input type="button" name="search" id="search" value="Buscar" class="btn btn-info form-control">
-                    </div>
-                    </div>
+					<div class="col-md-2"> <br>
+        				  <div class="form-group">
+							<button type="button" name="search" id="search" value="Buscar" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-search"></span> Registrar</button>
+          </div>
+        </div>
     
 
 			</div>
@@ -97,7 +97,37 @@ include ('menu.php');
 -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="../js/buscarfecha_pap.js"></script>
-
+	<script src="../js/sweetalert2.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+	<script>
+			$(document).ready(function(){
+			$('#formrivaa').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/referencia_papvph.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'GET',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Examen ECM registrado correctamente!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+        $('#formrivaa').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
 <?php require_once "scriptsjs.php"; ?>
 
 </body>

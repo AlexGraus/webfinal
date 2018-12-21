@@ -83,8 +83,15 @@
               <td> '.$filas['historiaclinica'].' </td>
               <td> '.$filas['fecha_examen'].' </td>
               <td bgcolor="#'.$bgcolor.'"> '.$filas['diagnostico'].' </td>
-              <td> '.$filas['fecha_nacimiento'].' </td>
-              <td > '.$filas['edad'].' </td>
+              <td> '.$filas['fecha_nacimiento'].' </td>';
+              $edadPaciente= $filas['fecha_nacimiento'];
+              $cumpleanos = new DateTime($edadPaciente);
+              $hoy = new DateTime();
+              $anios = $hoy->diff($cumpleanos);
+              $edad= $anios->y;
+  
+              $salida.='
+              <td > '.$edad.' </td>
               <td> '.$filas['centro_origen'].' </td>
                           <td> '.$filas['descripcion_diagnostico'].' </td>
                           <td> '.$filas['referenciar'].' </td>

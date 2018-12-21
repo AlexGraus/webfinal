@@ -1,7 +1,6 @@
 <?php
 include ('../entidades/establecimiento.php');
 
-if (isset($_POST['submit'])) {
     $codigo=$_POST['codigo'];
     $nombre=$_POST['nombre'];
     $provincia=$_POST['provincia'];
@@ -17,7 +16,4 @@ if (isset($_POST['submit'])) {
         header("Location: ../interfaz/establecimientos.php");
     }
 
-}else{
-    echo "no se puede acceder debido a que no se enviaron datos por el formulario :: POST VACIO";
-}
 ?>

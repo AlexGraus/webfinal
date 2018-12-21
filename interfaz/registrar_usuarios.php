@@ -1,8 +1,10 @@
 <?php
 include ('menu.php');
+/*
+??
 if ($fila['tipo']!="Administrador") {
   echo "<script language='javascript'>window.location='index.php'</script>;";
-}
+}*/
  ?>
   <!--/.----------------------------------------------------------------------------------------->
   <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -23,7 +25,7 @@ if ($fila['tipo']!="Administrador") {
 		<div class="panel panel-default">
 			<div class="panel-heading">Registro de Usuario</div>
 			<div class="panel-body">
-				<form role="form" method="POST" enctype="multipart/form-data"  action="../persistencia/usuarioDAO.php" >
+				<form id="fomulario" role="form" method="POST" enctype="multipart/form-data" >
 				<div class="col-md-6">
 						<div class="form-group">
 							<label>Nombres y Apellidos</label>
@@ -52,7 +54,7 @@ if ($fila['tipo']!="Administrador") {
 							<label>Contraseña</label>
 							<input name="password" placeholder="Ingrese Contraseña" class="form-control" type="password" required>
 						</div>
-						<input name="submit" type="submit" class="btn btn-primary" value="Registrar">
+						<input  type="submit" class="btn btn-primary" value="Registrar">
 					</div>
 
 				</form>
@@ -61,7 +63,38 @@ if ($fila['tipo']!="Administrador") {
 		</div>
 
 	</div>
-
-<?php require_once "scriptsjs.php"; ?>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="../js/sweetalert2.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+	<script>
+			$(document).ready(function(){
+			$('#fomulario').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/usuarioDAO.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'POST',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Usuario registrado correctamente!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+				$('#fomulario').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
+	<?php require_once "scriptsjs.php"; ?>
 </body>
 </html>

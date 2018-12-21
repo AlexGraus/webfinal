@@ -8,7 +8,7 @@ include ('menu.php');
       <li><a href="index.php">
           <em class="fa fa-home"></em>
         </a></li>
-      <li class="active">Registro de Referencia de Pacientes</li>
+      <li class="active">REFERENCIA ECM</li>
     </ol>
 </div>
 <div class="row">
@@ -18,7 +18,7 @@ include ('menu.php');
   <div class="panel-heading">Buscar examen Paciente</div>
   <div class="panel-body">
         <div class="col-md-3">
-          <form class="" action="../persistencia/referencia_ecmDAO.php" method="POST">  
+          <form id="formrecm" class=""  method="POST">  
         <div class="form-group">
           <label for="caja_busqueda">DNI</label>
           <?php include_once 'scriptsbaf.php'; ?>
@@ -39,8 +39,8 @@ include ('menu.php');
           </div>
         </div>
         <div class="col-md-2"> <br>
-          <div class="">
-              <input type="button" name="search" id="search" value="Buscar" class="btn btn-info form-control">
+          <div class="form-group">
+							<button type="button" name="search" id="search" value="Buscar" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-search"></span> Registrar</button>
           </div>
         </div>
         <div class="col-md-3">
@@ -111,6 +111,37 @@ include ('menu.php');
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="../js/buscarexamenpaciente.js"></script>
+<script src="../js/sweetalert2.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+	<script>
+			$(document).ready(function(){
+			$('#formrecm').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/referencia_ecmDAO.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'POST',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Referencia ECM registrado correctamente!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+        $('#formrecm').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
 <?php require_once "scriptsjs.php"; ?>
 </body>
 </html>

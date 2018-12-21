@@ -46,11 +46,14 @@
 						<th>Edad</th>
 						<th>Fecha de Nacimiento</th>
 						<th>Fecha de Ecografía</th>
-						<th>Resultado de Ecografía</th>';
+						<th>Resultado de Ecografía</th>
+						<th>Registrado por </th>';
 						$c = 1;
 					if(isset($cantidadTotal)){
 						while($cantidadTotal > 0){
-							$salida.='<th>Control '.$c.'</th>';
+							$salida.='
+							<th>Fecha del Seguimiento - '.$c.'</th>
+							<th>Descripción del Seguimiento - '.$c.'</th>';
 							$cantidadTotal--;
 							$c++;
 						}
@@ -70,12 +73,23 @@
 						<td> '.$filas['diagnostico'].' </td>
 						<td> '.$filas['historiaclinica'].' </td>
 						<td> '.$filas['dni'].' </td>
-						<td> '.$filas['centroprocedencia'].' </td>
-						<td> '.$filas['edad'].' </td>
+						<td> '.$filas['centroprocedencia'].' </td>';
+
+						$edadPaciente= $filas['fecha_nacimiento'];
+						$cumpleanos = new DateTime($edadPaciente);
+						$hoy = new DateTime();
+						$anios = $hoy->diff($cumpleanos);
+						$edad= $anios->y;
+
+						$salida.='
+						<td> '.$edad.'  </td>
 						<td> '.$filas['fecha_nacimiento'].' </td>
                         <td> '.$filas['fechaecografia'].' </td>
-                        <td> '.$filas['resultado'].' </td>
-                        ';
+						<td> '.$filas['resultado'].' </td>
+						<td> '.$filas['nombre'].' </td>
+						';
+						
+						
 						//Buscar Detalle
 						$codigoseguir = $filas['idmamografia'];
 						$queryDetalle = $controles ->buscarCodigoSeguimiento($codigoseguir);
@@ -90,7 +104,9 @@
 						if($resultadoDetalle->num_rows > 0){
 							while($fila = mysqli_fetch_array($resultadoDetalle)){
 								$cantidadFilas--;
-								$salida.='<td> '.$fila['descripcionbilateral'].'  </td>';
+								$salida.='
+								<td> '.$fila['fechabilateral'].'  </td>
+								<td> '.$fila['descripcionbilateral'].'  </td>';
 								if($cantidadFilas == 0){
 									while($detalle >0){
 										$salida.='<td>   </td>';

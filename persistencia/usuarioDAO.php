@@ -1,7 +1,7 @@
 <?php
 include ('../entidades/usuario.php');
 
-if (isset($_POST['submit'])) {
+
 
     $nombre=$_POST['nombre'];
     $email=$_POST['email'];
@@ -17,8 +17,6 @@ if (isset($_POST['submit'])) {
         $usuario->insertar();
         header("Location: ../interfaz/registrar_usuarios.php");
     }
-} else {
-    echo "no se puede acceder debido a que no se enviaron datos por el formulario :: POST VACIO";
-}
+
 
 ?>

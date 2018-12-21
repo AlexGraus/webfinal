@@ -29,28 +29,27 @@ include_once "conexion.php";
         }
 
         public function mostrar(){
-            $consulta = "SELECT pap.codigoseguimientopapivaa,p.nombres_apellidos,pap.tipoexamen,pap.resultados,p.edad,p.fecha_nacimiento,p.dni,p.telefono,p.telefono2,pap.fechaexamen, pap.establecimientoreferencia,pap.responsable,   pap.motivoreferencia,pap.referirvph,rp.fechareferencia,rp.procedimiento,rp.resultadoprocedimiento,rp.tratamiento FROM seguimiento_pap_ivaa as pap inner join referencia_papiva as rp on pap.codigoseguimientopapivaa = rp.codigopapiva 
+            $consulta = "SELECT pap.codigoseguimientopapivaa,p.nombres_apellidos,pap.tipoexamen,pap.resultados,p.edad,p.fecha_nacimiento,p.dni,p.telefono,p.telefono2,pap.fechaexamen, pap.establecimientoreferencia,pap.responsable,   pap.motivoreferencia,pap.referirvph,rp.fechareferencia,rp.procedimiento,rp.resultadoprocedimiento,rp.tratamiento,us.nombre FROM seguimiento_pap_ivaa as pap inner join referencia_papiva as rp on pap.codigoseguimientopapivaa = rp.codigopapiva 
             inner join paciente as p on pap.codigopaciente = p.dni inner join control_pap_iva as co on
-             rp.idpapiva = co.codigoseguimientopapivaa WHERE pap.tipoexamen = 'VPH' OR pap.tipoexamen='PAP' OR pap.tipoexamen='IVAA'";
+             rp.idpapiva = co.codigoseguimientopapivaa 
+             inner join usuario us on pap.responsable = us.id
+             WHERE pap.tipoexamen = 'VPH' OR pap.tipoexamen='PAP' OR pap.tipoexamen='IVAA'";
             return $consulta;
         }
         public function buscarDni($dni){
-            $consultaDni = "SELECT pap.codigoseguimientopapivaa,p.nombres_apellidos,pap.tipoexamen,pap.resultados,
-            p.edad,p.fecha_nacimiento,p.dni,p.telefono,p.telefono2,pap.fechaexamen, pap.establecimientoreferencia,
-            pap.responsable,   pap.motivoreferencia,pap.referirvph,rp.fechareferencia,rp.procedimiento,rp.resultadoprocedimiento,
-            rp.tratamiento FROM seguimiento_pap_ivaa as pap inner join referencia_papiva as rp on 
-            pap.codigoseguimientopapivaa = rp.codigopapiva 
+            $consultaDni = "SELECT pap.codigoseguimientopapivaa,p.nombres_apellidos,pap.tipoexamen,pap.resultados,p.edad,p.fecha_nacimiento,p.dni,p.telefono,p.telefono2,pap.fechaexamen, pap.establecimientoreferencia,pap.responsable,   pap.motivoreferencia,pap.referirvph,rp.fechareferencia,rp.procedimiento,rp.resultadoprocedimiento,rp.tratamiento,us.nombre FROM seguimiento_pap_ivaa as pap inner join referencia_papiva as rp on pap.codigoseguimientopapivaa = rp.codigopapiva 
             inner join paciente as p on pap.codigopaciente = p.dni inner join control_pap_iva as co on
-             rp.idpapiva = co.codigoseguimientopapivaa WHERE (pap.tipoexamen = 'VPH' OR pap.tipoexamen='PAP' OR pap.tipoexamen='IVAA') AND p.dni like '%".$dni."%' ";
+             rp.idpapiva = co.codigoseguimientopapivaa 
+             inner join usuario us on pap.responsable = us.id
+             WHERE (pap.tipoexamen = 'VPH' OR pap.tipoexamen='PAP' OR pap.tipoexamen='IVAA') AND p.dni like '%".$dni."%' ";
             return $consultaDni;
         }
         public function buscarPorFechas($fechaInicio,$fechaFin){
-            $consultaDni = "SELECT pap.codigoseguimientopapivaa,p.nombres_apellidos,pap.tipoexamen,pap.resultados,
-            p.edad,p.fecha_nacimiento,p.dni,p.telefono,p.telefono2,pap.fechaexamen, pap.establecimientoreferencia,pap.responsable, 
-              pap.motivoreferencia,pap.referirvph,rp.fechareferencia,rp.procedimiento,rp.resultadoprocedimiento,rp.tratamiento 
-              FROM seguimiento_pap_ivaa as pap inner join referencia_papiva as rp on pap.codigoseguimientopapivaa = rp.codigopapiva 
+            $consultaDni = "SELECT pap.codigoseguimientopapivaa,p.nombres_apellidos,pap.tipoexamen,pap.resultados,p.edad,p.fecha_nacimiento,p.dni,p.telefono,p.telefono2,pap.fechaexamen, pap.establecimientoreferencia,pap.responsable,   pap.motivoreferencia,pap.referirvph,rp.fechareferencia,rp.procedimiento,rp.resultadoprocedimiento,rp.tratamiento,us.nombre FROM seguimiento_pap_ivaa as pap inner join referencia_papiva as rp on pap.codigoseguimientopapivaa = rp.codigopapiva 
             inner join paciente as p on pap.codigopaciente = p.dni inner join control_pap_iva as co on
-             rp.idpapiva = co.codigoseguimientopapivaa WHERE pap.fechaexamen  BETWEEN '".$fechaInicio."%' AND '".$fechaFin."%' ";
+             rp.idpapiva = co.codigoseguimientopapivaa 
+             inner join usuario us on pap.responsable = us.id
+             WHERE pap.fechaexamen  BETWEEN '".$fechaInicio."%' AND '".$fechaFin."%' ";
             return $consultaDni;
         }
         #FINAL
@@ -90,7 +89,7 @@ include_once "conexion.php";
             return $sql;
         }
         public function buscarDetalle($codigoseguimientopapivaa){
-            $sql = "SELECT ct.descripcion from
+            $sql = "SELECT ct.fechacontrol,ct.descripcion from
             controles_pap_ivaa as ct inner join control_pap_iva as c on ct.idcontrol = c.idcontro_pap_iva
             inner join referencia_papiva as rp on c.codigoseguimientopapivaa = rp.idpapiva 
             inner join seguimiento_pap_ivaa as se on rp.codigopapiva = se.codigoseguimientopapivaa

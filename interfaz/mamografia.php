@@ -9,7 +9,7 @@ include ('menu.php');
 				<li><a href="#">
 						<em class="fa fa-home"></em>
 					</a></li>
-				<li class="active">Registrar Mamografía Bilateral</li>
+				<li class="active">REGISTRAR MAMOGRAFÍA BILATERAL</li>
 			</ol>
 		</div>
 		<!--/.row-->
@@ -27,7 +27,7 @@ include ('menu.php');
 			<div class="panel-heading">Buscar Paciente</div>
 			<div class="panel-body">
             <div class="col-md-6">
-					<form role="form" method="get" action="../persistencia/mamografiaDAO.php">
+					<form id="forma" role="form" method="GET">
 						<div class="form-group">
 							<label for="caja_busqueda">DNI</label>
               <?php include_once 'scriptsbaf.php'; ?>
@@ -38,13 +38,13 @@ include ('menu.php');
 						</div>
 
 			</div>
-      <div class="col-md-6">
+      <div class="col-md-2">
         <br>
         <div align="right">
-         <button type="button" name="age" id="age" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info">Registrar Nuevo</button>
+         <button type="button" name="age" id="age" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-plus"></span> Registrar Nuevo</button>
         </div>
       </div>
-
+    
 
 			</div>
 		</div>
@@ -152,7 +152,7 @@ include ('menu.php');
         <h4 class="modal-title" align="center">Registrar Nuevo Paciente</h4>
        </div>
        <div class="modal-body">
-        <form  id="insert_form" method="get" action="../persistencia/PacienteDAO.php" >
+        <form  id="insert_form" method="GET" >
           <input type="hidden" name="tabla_id" value="MAMA" >
           <label>DNI</label>
           <?php include_once 'scriptsbaf.php'; ?>
@@ -202,6 +202,67 @@ include ('menu.php');
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="../js/buscapaciente.js"></script> 
 	<script src="../js/resultados.js"></script>
+  <script src="../js/sweetalert2.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+	<script>
+			$(document).ready(function(){
+			$('#forma').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/mamografiaDAO.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'GET',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Examen registrado correctamente!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+        $('#forma').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
+  <script>
+			$(document).ready(function(){
+			$('#insert_form').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/PacienteDAO.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'GET',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Paciente registrado correctamente!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+        $('#insert_form').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
+
 <?php require_once "scriptsjs.php"; ?>
 
 </body>

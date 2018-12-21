@@ -25,19 +25,22 @@ include ('menu.php');
 		<div class="panel-heading">Registros Totales</div>
 		<div class="panel panel-container">
 			<div class="row">
+			
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="	glyphicon fa-xl glyphicon-list-alt color-red"></em>
-						<?php
+					<?php
 							include ('../entidades/extras.php');
 							$extra = Contador::vacio();
 							$cantidad = $extra->contadorMamografia();
 							if ($fila=mysqli_fetch_array($cantidad)){?>
+						<div class="row no-padding"><em class="	glyphicon fa-xl glyphicon-list-alt color-red"></em>
+						
 
 							<div class="large"><?php echo $fila['cantidad']?></div>
-							<?php }?>
+							
 							<div class="text-muted">Mamografía Bilateral</div>
 						</div>
+						<?php }?>
 					</div>
 				</div>
 
@@ -83,8 +86,8 @@ include ('menu.php');
 
 
 						<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-book color-red"></em>
+							<div class="panel panel-red panel-widget ">
+								<div class="row no-padding"><em class="fa fa-xl fa-book color-red"></em>
 
 						 <?php $cantidad = $extra->contadorECM();
 						 if($fila=mysqli_fetch_array($cantidad)){?>
@@ -147,7 +150,7 @@ include ('menu.php');
 				<div class="col-md-5">
 					<div class="form-group" >
 						<label for=""  class="form-group">Diagnosticos Mamografia</label>
-						<canvas id="myChart">HOLA</canvas>
+						<canvas id="myChart"></canvas>
 					</div>
 				</div>
 

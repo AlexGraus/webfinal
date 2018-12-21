@@ -23,7 +23,7 @@ include ('menu.php');
 			<div class="panel-heading">Registro de Paciente</div>
 			<div class="panel-body">
 				<div class="col-md-6">
-					<form id="fomulario" role="form" method="get" action="../persistencia/PacienteDAO.php" >
+					<form id="fomulario" role="form" method="GET" >
 						<div class="form-group">
 							<label>Nombres y Apellidos</label>
 							<input id="nombres" name="nombrespaciente" class="form-control" placeholder="Ingrese Nombres y Apellidos" required>
@@ -81,7 +81,37 @@ include ('menu.php');
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
+	<script src="../js/sweetalert2.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+	<script>
+			$(document).ready(function(){
+			$('#fomulario').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/PacienteDAO.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'GET',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Paciente registrado correctamente!!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+				$('#fomulario').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
 <?php require_once "scriptsjs.php"; ?>
 </body>
 

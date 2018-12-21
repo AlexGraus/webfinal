@@ -50,11 +50,16 @@
 						<th>Fecha de Referencia </th>
 						<th>Procedimiento </th>
 						<th>Resultado Procedimiento</th>
-						<th>Tratamiento </th>';
+						<th>Tratamiento </th>
+						<th>Responsable</th>
+						';
+						
 						$c = 1;
 					if(isset($cantidadTotal)){
 						while($cantidadTotal > 0){
-							$salida.='<th>Control '.$c.'</th>';
+							$salida.='
+							<th>Fecha del Seguimiento - '.$c.'</th>
+							<th>Descripción del Seguimiento - '.$c.'</th>';
 							$cantidadTotal--;
 							$c++;
 						}
@@ -70,8 +75,16 @@
 						<td> '.$filas['codigoseguimientopapivaa'].' </td>
 						<td> '.$filas['nombres_apellidos'].' </td>
 						<td> '.$filas['tipoexamen'].' </td>
-						<td> '.$filas['resultados'].' </td>
-						<td> '.$filas['edad'].' </td>
+						<td> '.$filas['resultados'].' </td>';
+						//calcular Edad
+						$edadPaciente= $filas['fecha_nacimiento'];
+						$cumpleanos = new DateTime($edadPaciente);
+						$hoy = new DateTime();
+						$anios = $hoy->diff($cumpleanos);
+						$edad= $anios->y;
+
+						$salida.='
+						<td> '.$edad.' </td>
 						<td> '.$filas['fecha_nacimiento'].' </td>
 						<td> '.$filas['dni'].' </td>
 						<td> '.$filas['telefono'].' </td>
@@ -86,7 +99,8 @@
 						<td> '.$filas['fechareferencia'].' </td>
 						<td> '.$filas['procedimiento'].' </td>
 						<td> '.$filas['resultadoprocedimiento'].' </td>
-						<td> '.$filas['tratamiento'].' </td>';
+						<td> '.$filas['tratamiento'].' </td>
+						<td> '.$filas['nombre'].' </td>';
 						
 						
 						//Buscar Detalle
@@ -105,7 +119,8 @@
 						if($resultadoDetalle->num_rows > 0){
 							while($fila = mysqli_fetch_array($resultadoDetalle)){
 								$cantidadFilas--;
-								$salida.='<td> '.$fila['descripcion'].'  </td>';
+								$salida.='<td> '.$fila['fechacontrol'].'  </td>
+								<td> '.$fila['descripcion'].'  </td>';
 								if($cantidadFilas == 0){
 									while($detalle >0){
 										$salida.='<td>   </td>';

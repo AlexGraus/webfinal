@@ -9,7 +9,7 @@ include ('menu.php');
 				<li><a href="#">
 						<em class="fa fa-home"></em>
 					</a></li>
-				<li class="active"> Referencia Mamografía Bilateral</li>
+				<li class="active">REFERENCIA MAMOGRAFÍA BILATERAL</li>
 			</ol>
 		</div>
 		<!--/.row-->
@@ -27,7 +27,7 @@ include ('menu.php');
 			<div class="panel-heading">Buscar Paciente</div>
 			<div class="panel-body">
             <div class="col-md-6">
-          <form class="" action="../persistencia/referencia_mamografiaDAO.php" method="GET">
+          <form id="formrefe" class="" method="GET">
         <div class="form-group">
           <label for="caja_busqueda">DNI</label>
           <?php include_once 'scriptsbaf.php'; ?>
@@ -48,8 +48,8 @@ include ('menu.php');
           </div>
         </div>
         <div class="col-md-2"> <br>
-          <div class="">
-              <input type="button" name="search" id="search" value="Buscar" class="btn btn-info form-control">
+          <div class="form-group">
+							<button type="button" name="search" id="search" value="Buscar" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-search"></span> Registrar</button>
           </div>
         </div>
 
@@ -107,6 +107,37 @@ include ('menu.php');
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="../js/buscarfechapaciente.js"></script> 
 	<script src="../js/resultados.js"></script>
+	<script src="../js/sweetalert2.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+	<script>
+			$(document).ready(function(){
+			$('#formrefe').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/referencia_mamografiaDAO.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'GET',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Referencia Mamografía registrado correctamente!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+        $('#formrefe').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
 <?php require_once "scriptsjs.php"; ?>
 
 </body>

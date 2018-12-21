@@ -8,7 +8,7 @@ include ('menu.php');
 				<li><a href="index.php">
 						<em class="fa fa-home"></em>
 					</a></li>
-				<li class="active">Registro de atencion ECM</li>
+				<li class="active">REGISTRO DE ATENCIÓN ECM</li>
 			</ol>
 	</div>
 	<div class="row">
@@ -19,7 +19,7 @@ include ('menu.php');
 		<div class="panel-heading">Buscar Paciente</div>
 		<div class="panel-body">
 					<div class="col-md-6">
-				<form role="form" method="GET" action="../persistencia/examenEcmDAO.php">
+				<form id="formecm" role="form" method="GET" >
           <div class="form-group">
             <label for="caja_busqueda">DNI</label>
               <input type="text" id="caja_busqueda"  name="dnipaciente" class="form-control" placeholder="Buscar DNI" onkeypress="return solonumeros(event)" onpaste="return false" required/>
@@ -27,10 +27,10 @@ include ('menu.php');
 					<div id="buscandoCodigo" class="form-group">
 					</div>
 		</div>
-    <div class="col-md-6">
+    <div class="col-md-2">
       <br>
       <div align="right">
-       <button type="button" name="age" id="age" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info">Registrar Nuevo</button>
+      <button type="button" name="age" id="age" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-plus"></span> Registrar Nuevo</button>
       </div>
     </div>
 
@@ -107,7 +107,11 @@ include ('menu.php');
 <div class="panel panel-default">
 	<div class="">
 		<div class="form-group" align="center" >
-			<input type="submit"  name = "submit" class=" btn btn-primary" Value="Registrar">
+		<div class="col-md-12 text-center">
+                    <div class ="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-ok"></span> Registrar</button>
+                    </div>
+    </div>
 		</div>
 	</div>
 	</form>
@@ -123,7 +127,7 @@ include ('menu.php');
     <h4 class="modal-title" align="center">Registrar Nuevo Paciente</h4>
    </div>
    <div class="modal-body">
-    <form  id="insert_form" method="get" action="../persistencia/PacienteDAO.php" >
+    <form  id="insert_form" method="GET"  >
       <input type="hidden" name="tabla_id" value="ECM" >
       <label>DNI</label>
       <?php include_once 'scriptsbaf.php'; ?>
@@ -170,6 +174,66 @@ include ('menu.php');
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="../js/buscapaciente.js"></script>
+<script src="../js/sweetalert2.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+	<script>
+			$(document).ready(function(){
+			$('#formecm').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/examenEcmDAO.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'GET',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Examen ECM registrado correctamente!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+        $('#formecm').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
+  <script>
+			$(document).ready(function(){
+			$('#insert_form').on('submit',function(e) { 
+				 //Don't foget to change the id form
+			$.ajax({
+				url:'../persistencia/PacienteDAO.php', //===PHP file name====
+				data:$(this).serialize(),
+				type:'GET',
+				success:function(data){
+				console.log(data);
+				//Success Message == 'Title', 'Message body', Last one leave as it is
+				Swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Paciente registrado correctamente!!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+        $('#insert_form').get(0).reset();
+				},
+				error:function(data){
+				//Error Message == 'Title', 'Message body', Last one leave as it is
+				swal("Oops...", "Something went wrong :(", "error");
+				}
+			});
+				e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+			});
+		});
+	</script>
 <?php require_once "scriptsjs.php"; ?>
 </body>
 </html>
