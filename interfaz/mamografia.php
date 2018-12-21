@@ -38,6 +38,9 @@ include ('menu.php');
 						</div>
 
 			</div>
+
+
+
       <div class="col-md-2">
         <br>
         <div align="right">
@@ -198,10 +201,21 @@ include ('menu.php');
      </div>
     </div>
 	<!--/.main
--->
+	
+
+</div>
+
+
+
+
+
+
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 	<script src="../js/buscapaciente.js"></script> 
+	<script src="../js/buscarhistorial.js"></script>
 	<script src="../js/resultados.js"></script>
+
   <script src="../js/sweetalert2.min.js"></script>
     <script src="../js/sweetalert2.all.min.js"></script>
 	<script>
