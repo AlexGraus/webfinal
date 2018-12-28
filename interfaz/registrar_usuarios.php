@@ -38,8 +38,8 @@ if ($fila['tipo']!="Administrador") {
                         <div class="form-group">
 							<label>Tipo de Usuario</label>
 							<select name="tipo" class="form-control">
-								<option value="Administrador">Administrador</option>
-								<option value="Digitador">Digitador</option>
+								<option value="Administrador">Coordinador</option>
+								<option value="Digitador">Obstetra</option>
 							</select>
 						</div>
 

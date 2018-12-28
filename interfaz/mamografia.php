@@ -200,7 +200,7 @@ include ('menu.php');
       </div>
      </div>
     </div>
-	<!--/.main
+
 	
 
 </div>
@@ -213,7 +213,7 @@ include ('menu.php');
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script src="../js/buscapaciente.js"></script> 
-	<script src="../js/buscarhistorial.js"></script>
+
 	<script src="../js/resultados.js"></script>
 
   <script src="../js/sweetalert2.min.js"></script>
